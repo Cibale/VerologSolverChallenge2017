@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solution>
+	<info>
+		<dataset>ORTEC Test Set</dataset>
+		<name>Instance 04</name>
+	</info>
+	<days>
+		<day id="1">
+			<vehicles>
+				<vehicle id="1">
+					<route>
+						<depot />
+						<request type="deliver">117</request>
+						<request type="deliver">39</request>
+						<request type="deliver">11</request>
+						<request type="deliver">20</request>
+						<request type="deliver">99</request>
+						<depot />
+						<request type="deliver">95</request>
+						<request type="deliver">129</request>
+						<request type="deliver">17</request>
+						<depot />
+						<request type="deliver">23</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="2">
+					<route>
+						<depot />
+						<request type="deliver">34</request>
+						<request type="deliver">112</request>
+						<request type="deliver">28</request>
+						<depot />
+						<request type="deliver">37</request>
+						<request type="deliver">35</request>
+						<request type="deliver">36</request>
+						<depot />
+						<request type="deliver">80</request>
+						<request type="deliver">54</request>
+						<request type="deliver">97</request>
+						<request type="deliver">141</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="3">
+					<route>
+						<depot />
+						<request type="deliver">64</request>
+						<request type="deliver">71</request>
+						<request type="deliver">142</request>
+						<request type="deliver">41</request>
+						<request type="deliver">84</request>
+						<request type="deliver">30</request>
+						<depot />
+						<request type="deliver">66</request>
+						<request type="deliver">102</request>
+						<request type="deliver">145</request>
+						<depot />
+						<request type="deliver">32</request>
+						<request type="deliver">58</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="4">
+					<route>
+						<depot />
+						<request type="deliver">7</request>
+						<request type="deliver">57</request>
+						<depot />
+						<request type="deliver">94</request>
+						<request type="deliver">62</request>
+						<request type="deliver">124</request>
+						<request type="deliver">111</request>
+						<request type="deliver">44</request>
+						<depot />
+						<request type="deliver">137</request>
+						<request type="deliver">77</request>
+						<request type="deliver">12</request>
+						<request type="deliver">13</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="5">
+					<route>
+						<depot />
+						<request type="deliver">92</request>
+						<request type="deliver">127</request>
+						<depot />
+						<request type="deliver">134</request>
+						<request type="deliver">83</request>
+						<depot />
+						<request type="deliver">50</request>
+						<request type="deliver">72</request>
+						<request type="deliver">118</request>
+						<request type="deliver">15</request>
+						<depot />
+						<request type="deliver">81</request>
+						<request type="deliver">90</request>
+						<request type="deliver">133</request>
+						<depot />
+						<request type="deliver">47</request>
+						<request type="deliver">89</request>
+						<request type="deliver">104</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="6">
+					<route>
+						<depot />
+						<request type="deliver">5</request>
+						<request type="deliver">27</request>
+						<depot />
+						<request type="deliver">59</request>
+						<depot />
+						<request type="deliver">106</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="7">
+					<route>
+						<depot />
+						<request type="deliver">78</request>
+						<depot />
+						<request type="deliver">148</request>
+						<depot />
+						<request type="deliver">150</request>
+						<depot />
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="2">
+			<vehicles>
+				<vehicle id="1">
+					<route>
+						<depot />
+						<request type="deliver">79</request>
+						<request type="pickup">94</request>
+						<request type="deliver">139</request>
+						<request type="deliver">3</request>
+						<request type="deliver">91</request>
+						<request type="deliver">40</request>
+						<request type="deliver">115</request>
+						<depot />
+						<request type="deliver">25</request>
+						<request type="deliver">126</request>
+						<request type="pickup">58</request>
+						<request type="deliver">130</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="2">
+					<route>
+						<depot />
+						<request type="deliver">33</request>
+						<request type="deliver">42</request>
+						<request type="deliver">143</request>
+						<request type="pickup">78</request>
+						<request type="deliver">56</request>
+						<request type="deliver">73</request>
+						<depot />
+						<request type="pickup">50</request>
+						<request type="deliver">93</request>
+						<request type="pickup">150</request>
+						<request type="deliver">61</request>
+						<request type="deliver">65</request>
+						<request type="pickup">95</request>
+						<request type="deliver">63</request>
+						<request type="pickup">83</request>
+						<request type="deliver">19</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="3">
+					<route>
+						<depot />
+						<request type="deliver">82</request>
+						<request type="deliver">147</request>
+						<request type="deliver">140</request>
+						<depot />
+						<request type="deliver">146</request>
+						<request type="pickup">36</request>
+						<request type="deliver">107</request>
+						<depot />
+						<request type="deliver">131</request>
+						<request type="deliver">52</request>
+						<request type="deliver">8</request>
+						<request type="deliver">132</request>
+						<request type="deliver">53</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="4">
+					<route>
+						<depot />
+						<request type="deliver">16</request>
+						<request type="deliver">98</request>
+						<request type="deliver">109</request>
+						<request type="deliver">4</request>
+						<request type="deliver">38</request>
+						<request type="deliver">125</request>
+						<request type="deliver">10</request>
+						<depot />
+						<request type="deliver">1</request>
+						<request type="deliver">49</request>
+						<request type="deliver">123</request>
+						<request type="deliver">101</request>
+						<request type="deliver">31</request>
+						<depot />
+						<request type="deliver">120</request>
+						<request type="deliver">70</request>
+						<request type="deliver">45</request>
+						<request type="pickup">80</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="5">
+					<route>
+						<depot />
+						<request type="deliver">105</request>
+						<request type="deliver">55</request>
+						<depot />
+						<request type="deliver">116</request>
+						<request type="deliver">85</request>
+						<depot />
+						<request type="deliver">43</request>
+						<request type="pickup">104</request>
+						<request type="deliver">26</request>
+						<depot />
+						<request type="deliver">128</request>
+						<request type="deliver">113</request>
+						<depot />
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="3">
+			<vehicles>
+				<vehicle id="1">
+					<route>
+						<depot />
+						<request type="pickup">27</request>
+						<request type="pickup">115</request>
+						<request type="deliver">69</request>
+						<request type="pickup">71</request>
+						<request type="pickup">34</request>
+						<request type="deliver">76</request>
+						<request type="deliver">46</request>
+						<request type="pickup">142</request>
+						<request type="pickup">19</request>
+						<depot />
+						<request type="deliver">87</request>
+						<request type="deliver">75</request>
+						<request type="deliver">60</request>
+						<request type="pickup">37</request>
+						<request type="pickup">146</request>
+						<request type="deliver">21</request>
+						<request type="deliver">138</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="2">
+					<route>
+						<depot />
+						<request type="pickup">10</request>
+						<request type="pickup">102</request>
+						<request type="pickup">39</request>
+						<request type="deliver">96</request>
+						<request type="deliver">114</request>
+						<request type="pickup">28</request>
+						<request type="pickup">91</request>
+						<request type="pickup">112</request>
+						<request type="deliver">122</request>
+						<request type="pickup">20</request>
+						<request type="deliver">67</request>
+						<request type="pickup">143</request>
+						<request type="pickup">61</request>
+						<request type="deliver">110</request>
+						<request type="pickup">82</request>
+						<depot />
+						<request type="deliver">86</request>
+						<request type="deliver">103</request>
+						<request type="pickup">43</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="3">
+					<route>
+						<depot />
+						<request type="deliver">51</request>
+						<request type="pickup">72</request>
+						<request type="deliver">24</request>
+						<request type="pickup">109</request>
+						<request type="deliver">18</request>
+						<request type="deliver">100</request>
+						<request type="pickup">4</request>
+						<request type="pickup">38</request>
+						<request type="pickup">137</request>
+						<depot />
+						<request type="pickup">101</request>
+						<request type="deliver">119</request>
+						<request type="pickup">106</request>
+						<request type="deliver">6</request>
+						<request type="deliver">121</request>
+						<request type="pickup">124</request>
+						<request type="pickup">123</request>
+						<request type="pickup">1</request>
+						<request type="pickup">134</request>
+						<request type="pickup">44</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="4">
+					<route>
+						<depot />
+						<request type="deliver">9</request>
+						<request type="pickup">97</request>
+						<request type="pickup">54</request>
+						<request type="deliver">68</request>
+						<request type="pickup">12</request>
+						<request type="pickup">13</request>
+						<request type="deliver">2</request>
+						<request type="pickup">15</request>
+						<request type="deliver">135</request>
+						<depot />
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="4">
+			<vehicles>
+				<vehicle id="1">
+					<route>
+						<depot />
+						<request type="pickup">117</request>
+						<request type="pickup">64</request>
+						<request type="deliver">48</request>
+						<request type="pickup">11</request>
+						<request type="pickup">122</request>
+						<request type="pickup">25</request>
+						<depot />
+						<request type="pickup">5</request>
+						<request type="deliver">149</request>
+						<request type="pickup">147</request>
+						<request type="pickup">30</request>
+						<depot />
+						<request type="pickup">23</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="2">
+					<route>
+						<depot />
+						<request type="pickup">9</request>
+						<request type="deliver">29</request>
+						<request type="pickup">114</request>
+						<request type="pickup">99</request>
+						<request type="pickup">129</request>
+						<request type="deliver">108</request>
+						<request type="pickup">69</request>
+						<request type="pickup">87</request>
+						<request type="pickup">111</request>
+						<depot />
+						<request type="pickup">148</request>
+						<request type="pickup">100</request>
+						<request type="pickup">145</request>
+						<request type="deliver">136</request>
+						<request type="pickup">92</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="3">
+					<route>
+						<depot />
+						<request type="pickup">84</request>
+						<request type="pickup">35</request>
+						<request type="pickup">75</request>
+						<request type="pickup">62</request>
+						<depot />
+						<request type="pickup">107</request>
+						<request type="deliver">88</request>
+						<request type="pickup">121</request>
+						<request type="pickup">6</request>
+						<depot />
+						<request type="pickup">47</request>
+						<request type="pickup">17</request>
+						<request type="pickup">130</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="4">
+					<route>
+						<depot />
+						<request type="pickup">7</request>
+						<request type="pickup">57</request>
+						<depot />
+						<request type="pickup">32</request>
+						<request type="pickup">41</request>
+						<depot />
+						<request type="pickup">127</request>
+						<request type="pickup">66</request>
+						<request type="pickup">77</request>
+						<request type="pickup">68</request>
+						<request type="deliver">14</request>
+						<request type="pickup">89</request>
+						<depot />
+						<request type="pickup">133</request>
+						<request type="pickup">86</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="5">
+					<route>
+						<depot />
+						<request type="pickup">93</request>
+						<request type="pickup">118</request>
+						<depot />
+						<request type="pickup">141</request>
+						<request type="deliver">74</request>
+						<request type="pickup">2</request>
+						<request type="pickup">55</request>
+						<request type="pickup">98</request>
+						<request type="deliver">144</request>
+						<depot />
+						<request type="pickup">90</request>
+						<request type="pickup">132</request>
+						<request type="pickup">81</request>
+						<request type="deliver">22</request>
+						<depot />
+						<request type="pickup">59</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="6">
+					<route>
+						<depot />
+						<request type="pickup">119</request>
+						<depot />
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="5">
+			<vehicles>
+				<vehicle id="1">
+					<route>
+						<depot />
+						<request type="pickup">76</request>
+						<request type="pickup">46</request>
+						<depot />
+						<request type="pickup">48</request>
+						<request type="pickup">149</request>
+						<depot />
+						<request type="pickup">135</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="2">
+					<route>
+						<depot />
+						<request type="pickup">139</request>
+						<request type="pickup">3</request>
+						<request type="pickup">67</request>
+						<request type="pickup">42</request>
+						<depot />
+						<request type="pickup">31</request>
+						<request type="pickup">40</request>
+						<request type="pickup">60</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="3">
+					<route>
+						<depot />
+						<request type="pickup">18</request>
+						<request type="pickup">33</request>
+						<request type="pickup">140</request>
+						<request type="pickup">63</request>
+						<depot />
+						<request type="pickup">105</request>
+						<request type="pickup">24</request>
+						<depot />
+						<request type="pickup">131</request>
+						<request type="pickup">22</request>
+						<request type="pickup">52</request>
+						<request type="pickup">8</request>
+						<request type="pickup">53</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="4">
+					<route>
+						<depot />
+						<request type="pickup">88</request>
+						<request type="pickup">49</request>
+						<depot />
+						<request type="pickup">79</request>
+						<request type="pickup">21</request>
+						<request type="pickup">138</request>
+						<depot />
+						<request type="pickup">136</request>
+						<request type="pickup">125</request>
+						<request type="pickup">51</request>
+						<depot />
+						<request type="pickup">103</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="5">
+					<route>
+						<depot />
+						<request type="pickup">26</request>
+						<request type="pickup">14</request>
+						<request type="pickup">45</request>
+						<request type="pickup">116</request>
+						<depot />
+						<request type="pickup">74</request>
+						<request type="pickup">120</request>
+						<request type="pickup">70</request>
+						<request type="pickup">85</request>
+						<depot />
+						<request type="pickup">56</request>
+						<request type="pickup">73</request>
+						<depot />
+						<request type="pickup">29</request>
+						<request type="pickup">144</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="6">
+					<route>
+						<depot />
+						<request type="pickup">108</request>
+						<request type="pickup">110</request>
+						<depot />
+						<request type="pickup">16</request>
+						<request type="pickup">96</request>
+						<depot />
+						<request type="pickup">128</request>
+						<request type="pickup">113</request>
+						<depot />
+					</route>
+				</vehicle>
+				<vehicle id="7">
+					<route>
+						<depot />
+						<request type="pickup">65</request>
+						<depot />
+						<request type="pickup">126</request>
+						<depot />
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+	</days>
+</solution>

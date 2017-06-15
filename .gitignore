@@ -1,2 +1,5 @@
 .idea/
+out/
+src/main/main.txt
+src/test/test.txt
 bin/

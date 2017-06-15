@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solution>
+	<info>
+		<dataset>ORTEC Test Set</dataset>
+		<name>Instance 01</name>
+	</info>
+	<cost>
+		<max_number_of_vehicles>12</max_number_of_vehicles>
+		<number_of_vehicle_days>42</number_of_vehicle_days>
+		<distance>1052542</distance>
+		<cost_value>5186862</cost_value>
+		<tools>
+			<tool id="1">280</tool>
+			<tool id="2">133</tool>
+		</tools>
+	</cost>
+	<days>
+		<day id="1">
+			<start_depot>
+				<tool id="1">83</tool>
+				<tool id="2">41</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">83</tool>
+				<tool id="2">41</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="12">
+				<vehicle id="1">
+					<distance>27295</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-4</tool>
+						</depot>
+						<request type="deliver">62</request>
+						<request type="deliver">134</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">126</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-4</tool>
+						</depot>
+						<request type="deliver">92</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="2">
+					<distance>23739</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">34</request>
+						<request type="deliver">137</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">102</request>
+						<request type="deliver">104</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="3">
+					<distance>25847</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">99</request>
+						<request type="deliver">107</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">83</request>
+						<request type="deliver">140</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="4">
+					<distance>22421</distance>
+					<route>
+						<depot>
+							<tool id="1">-2</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">81</request>
+						<request type="deliver">106</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">11</request>
+						<request type="deliver">112</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="5">
+					<distance>29333</distance>
+					<route>
+						<depot>
+							<tool id="1">-38</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="deliver">44</request>
+						<request type="deliver">133</request>
+						<request type="deliver">30</request>
+						<request type="deliver">94</request>
+						<request type="deliver">142</request>
+						<request type="deliver">47</request>
+						<request type="deliver">125</request>
+						<depot>
+							<tool id="1">-2</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">8</request>
+						<request type="deliver">59</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="6">
+					<distance>25844</distance>
+					<route>
+						<depot>
+							<tool id="1">-38</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="deliver">117</request>
+						<request type="deliver">66</request>
+						<request type="deliver">35</request>
+						<request type="deliver">95</request>
+						<request type="deliver">17</request>
+						<request type="deliver">85</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">23</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-2</tool>
+						</depot>
+						<request type="deliver">15</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="7">
+					<distance>28119</distance>
+					<route>
+						<depot>
+							<tool id="1">-38</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="deliver">3</request>
+						<request type="deliver">41</request>
+						<request type="deliver">111</request>
+						<request type="deliver">12</request>
+						<request type="deliver">45</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">70</request>
+						<request type="deliver">97</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="8">
+					<distance>27175</distance>
+					<route>
+						<depot>
+							<tool id="1">-38</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="deliver">118</request>
+						<request type="deliver">72</request>
+						<request type="deliver">28</request>
+						<request type="deliver">33</request>
+						<depot>
+							<tool id="1">-3</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">57</request>
+						<request type="deliver">145</request>
+						<request type="deliver">148</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="9">
+					<distance>20878</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">7</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">5</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="10">
+					<distance>17346</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-4</tool>
+						</depot>
+						<request type="deliver">36</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-4</tool>
+						</depot>
+						<request type="deliver">32</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="11">
+					<distance>15452</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-4</tool>
+						</depot>
+						<request type="deliver">90</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">65</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="12">
+					<distance>28970</distance>
+					<route>
+						<depot>
+							<tool id="1">-38</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="deliver">84</request>
+						<request type="deliver">64</request>
+						<request type="deliver">27</request>
+						<request type="deliver">49</request>
+						<request type="deliver">13</request>
+						<request type="deliver">77</request>
+						<request type="deliver">127</request>
+						<request type="deliver">98</request>
+						<request type="deliver">31</request>
+						<request type="deliver">124</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="2">
+			<start_depot>
+				<tool id="1">29</tool>
+				<tool id="2">12</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">29</tool>
+				<tool id="2">12</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="5">
+				<vehicle id="1">
+					<distance>27724</distance>
+					<route>
+						<depot>
+							<tool id="1">-9</tool>
+							<tool id="2">-4</tool>
+						</depot>
+						<request type="deliver">80</request>
+						<request type="deliver">39</request>
+						<request type="deliver">61</request>
+						<request type="deliver">105</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">120</request>
+						<request type="deliver">147</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="2">
+					<distance>29213</distance>
+					<route>
+						<depot>
+							<tool id="1">-10</tool>
+							<tool id="2">-4</tool>
+						</depot>
+						<request type="deliver">53</request>
+						<request type="deliver">109</request>
+						<request type="deliver">25</request>
+						<request type="deliver">56</request>
+						<request type="pickup">83</request>
+						<request type="deliver">116</request>
+						<request type="deliver">52</request>
+						<request type="deliver">26</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">93</request>
+						<request type="deliver">110</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="3">
+					<distance>24276</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-3</tool>
+						</depot>
+						<request type="deliver">129</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-3</tool>
+						</depot>
+						<request type="deliver">42</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="4">
+					<distance>10718</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">16</request>
+						<request type="deliver">40</request>
+						<request type="deliver">73</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="5">
+					<distance>29416</distance>
+					<route>
+						<depot>
+							<tool id="1">-35</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="deliver">141</request>
+						<request type="deliver">128</request>
+						<request type="pickup">104</request>
+						<request type="deliver">79</request>
+						<request type="deliver">130</request>
+						<request type="deliver">131</request>
+						<request type="deliver">139</request>
+						<request type="pickup">36</request>
+						<request type="deliver">113</request>
+						<request type="pickup">95</request>
+						<request type="deliver">63</request>
+						<request type="pickup">94</request>
+						<request type="deliver">89</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="3">
+			<start_depot>
+				<tool id="1">0</tool>
+				<tool id="2">0</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">0</tool>
+				<tool id="2">1</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="6">
+				<vehicle id="1">
+					<distance>14212</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-5</tool>
+						</depot>
+						<request type="deliver">75</request>
+						<request type="pickup">34</request>
+						<request type="deliver">9</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="2">
+					<distance>23616</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-3</tool>
+						</depot>
+						<request type="pickup">15</request>
+						<request type="deliver">71</request>
+						<request type="pickup">134</request>
+						<request type="deliver">150</request>
+						<request type="pickup">97</request>
+						<request type="deliver">21</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="3">
+					<distance>28281</distance>
+					<route>
+						<depot>
+							<tool id="1">-8</tool>
+							<tool id="2">-4</tool>
+						</depot>
+						<request type="deliver">138</request>
+						<request type="deliver">115</request>
+						<request type="pickup">13</request>
+						<request type="deliver">1</request>
+						<request type="pickup">44</request>
+						<request type="deliver">67</request>
+						<request type="pickup">112</request>
+						<request type="deliver">121</request>
+						<request type="deliver">6</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="4">
+					<distance>28668</distance>
+					<route>
+						<depot>
+							<tool id="1">-6</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="deliver">100</request>
+						<request type="pickup">109</request>
+						<request type="deliver">20</request>
+						<request type="pickup">107</request>
+						<request type="deliver">46</request>
+						<request type="pickup">106</request>
+						<request type="deliver">96</request>
+						<request type="pickup">102</request>
+						<request type="deliver">103</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="5">
+					<distance>27316</distance>
+					<route>
+						<depot>
+							<tool id="1">-13</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">98</request>
+						<request type="deliver">51</request>
+						<request type="pickup">80</request>
+						<request type="deliver">132</request>
+						<request type="pickup">124</request>
+						<request type="deliver">76</request>
+						<request type="pickup">61</request>
+						<request type="deliver">18</request>
+						<request type="pickup">137</request>
+						<request type="deliver">135</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">1</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="6">
+					<distance>27992</distance>
+					<route>
+						<depot>
+							<tool id="1">-2</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">27</request>
+						<request type="deliver">37</request>
+						<request type="pickup">142</request>
+						<request type="deliver">24</request>
+						<request type="pickup">12</request>
+						<request type="deliver">55</request>
+						<request type="pickup">28</request>
+						<request type="deliver">60</request>
+						<request type="pickup">72</request>
+						<request type="deliver">54</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="4">
+			<start_depot>
+				<tool id="1">0</tool>
+				<tool id="2">1</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">82</tool>
+				<tool id="2">24</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="9">
+				<vehicle id="1">
+					<distance>29290</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">6</request>
+						<request type="pickup">140</request>
+						<request type="pickup">147</request>
+						<request type="deliver">143</request>
+						<request type="pickup">84</request>
+						<request type="pickup">1</request>
+						<depot>
+							<tool id="1">6</tool>
+							<tool id="2">4</tool>
+						</depot>
+						<request type="pickup">8</request>
+						<request type="pickup">49</request>
+						<request type="pickup">62</request>
+						<depot>
+							<tool id="1">5</tool>
+							<tool id="2">2</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="2">
+					<distance>19324</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">64</request>
+						<request type="pickup">65</request>
+						<request type="deliver">69</request>
+						<request type="pickup">75</request>
+						<depot>
+							<tool id="1">2</tool>
+							<tool id="2">5</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="3">
+					<distance>26304</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">125</request>
+						<request type="pickup">93</request>
+						<request type="deliver">122</request>
+						<request type="pickup">111</request>
+						<request type="deliver">91</request>
+						<request type="pickup">99</request>
+						<request type="pickup">25</request>
+						<depot>
+							<tool id="1">16</tool>
+							<tool id="2">3</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="4">
+					<distance>28813</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">3</request>
+						<request type="pickup">148</request>
+						<request type="deliver">2</request>
+						<request type="pickup">33</request>
+						<request type="deliver">50</request>
+						<request type="pickup">118</request>
+						<request type="deliver">10</request>
+						<request type="pickup">110</request>
+						<depot>
+							<tool id="1">17</tool>
+							<tool id="2">3</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="5">
+					<distance>29405</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">100</request>
+						<request type="pickup">145</request>
+						<request type="deliver">82</request>
+						<request type="pickup">77</request>
+						<request type="deliver">123</request>
+						<request type="pickup">126</request>
+						<request type="deliver">22</request>
+						<depot>
+							<tool id="1">3</tool>
+							<tool id="2">2</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="6">
+					<distance>29288</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">127</request>
+						<request type="deliver">144</request>
+						<request type="pickup">150</request>
+						<request type="deliver">108</request>
+						<request type="pickup">90</request>
+						<request type="deliver">88</request>
+						<request type="pickup">59</request>
+						<request type="deliver">119</request>
+						<request type="pickup">5</request>
+						<request type="deliver">78</request>
+						<request type="pickup">7</request>
+						<request type="deliver">146</request>
+						<request type="pickup">57</request>
+						<request type="pickup">115</request>
+						<request type="pickup">39</request>
+						<request type="pickup">117</request>
+						<request type="pickup">31</request>
+						<depot>
+							<tool id="1">14</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="7">
+					<distance>28794</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">121</request>
+						<request type="deliver">101</request>
+						<request type="pickup">11</request>
+						<request type="deliver">149</request>
+						<request type="pickup">92</request>
+						<request type="deliver">136</request>
+						<request type="pickup">30</request>
+						<request type="deliver">87</request>
+						<request type="pickup">32</request>
+						<request type="deliver">43</request>
+						<request type="pickup">85</request>
+						<request type="deliver">86</request>
+						<depot>
+							<tool id="1">9</tool>
+							<tool id="2">1</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="8">
+					<distance>29145</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">81</request>
+						<request type="pickup">23</request>
+						<request type="deliver">29</request>
+						<request type="pickup">133</request>
+						<request type="deliver">48</request>
+						<request type="pickup">66</request>
+						<request type="deliver">4</request>
+						<request type="pickup">35</request>
+						<request type="deliver">58</request>
+						<request type="pickup">9</request>
+						<request type="deliver">19</request>
+						<request type="pickup">130</request>
+						<depot>
+							<tool id="1">8</tool>
+							<tool id="2">2</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="9">
+					<distance>28774</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">70</request>
+						<request type="deliver">14</request>
+						<request type="pickup">45</request>
+						<request type="deliver">74</request>
+						<request type="pickup">47</request>
+						<request type="deliver">38</request>
+						<request type="pickup">41</request>
+						<request type="deliver">114</request>
+						<request type="pickup">17</request>
+						<request type="deliver">68</request>
+						<depot>
+							<tool id="1">2</tool>
+							<tool id="2">1</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="5">
+			<start_depot>
+				<tool id="1">82</tool>
+				<tool id="2">24</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">280</tool>
+				<tool id="2">133</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="10">
+				<vehicle id="1">
+					<distance>27840</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">58</request>
+						<request type="pickup">21</request>
+						<request type="pickup">138</request>
+						<depot>
+							<tool id="1">7</tool>
+							<tool id="2">4</tool>
+						</depot>
+						<request type="pickup">55</request>
+						<request type="pickup">105</request>
+						<depot>
+							<tool id="1">9</tool>
+							<tool id="2">4</tool>
+						</depot>
+						<request type="pickup">131</request>
+						<request type="pickup">116</request>
+						<request type="pickup">135</request>
+						<depot>
+							<tool id="1">8</tool>
+							<tool id="2">4</tool>
+						</depot>
+						<request type="pickup">113</request>
+						<request type="pickup">128</request>
+						<depot>
+							<tool id="1">3</tool>
+							<tool id="2">5</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="2">
+					<distance>28125</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">56</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">4</tool>
+						</depot>
+						<request type="pickup">19</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">3</tool>
+						</depot>
+						<request type="pickup">73</request>
+						<request type="pickup">69</request>
+						<request type="pickup">71</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">5</tool>
+						</depot>
+						<request type="pickup">74</request>
+						<request type="pickup">2</request>
+						<request type="pickup">120</request>
+						<depot>
+							<tool id="1">2</tool>
+							<tool id="2">5</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="3">
+					<distance>27304</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">96</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">4</tool>
+						</depot>
+						<request type="pickup">78</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">5</tool>
+						</depot>
+						<request type="pickup">29</request>
+						<request type="pickup">144</request>
+						<depot>
+							<tool id="1">3</tool>
+							<tool id="2">5</tool>
+						</depot>
+						<request type="pickup">26</request>
+						<request type="pickup">43</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">5</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="4">
+					<distance>24710</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">146</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">5</tool>
+						</depot>
+						<request type="pickup">119</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">5</tool>
+						</depot>
+						<request type="pickup">103</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">5</tool>
+						</depot>
+						<request type="pickup">101</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">3</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="5">
+					<distance>19039</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">89</request>
+						<request type="pickup">14</request>
+						<request type="pickup">54</request>
+						<request type="pickup">68</request>
+						<request type="pickup">141</request>
+						<depot>
+							<tool id="1">31</tool>
+							<tool id="2">1</tool>
+						</depot>
+						<request type="pickup">38</request>
+						<request type="pickup">4</request>
+						<request type="pickup">18</request>
+						<request type="pickup">24</request>
+						<request type="pickup">82</request>
+						<depot>
+							<tool id="1">36</tool>
+							<tool id="2">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="6">
+					<distance>15996</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">22</request>
+						<request type="pickup">52</request>
+						<request type="pickup">132</request>
+						<request type="pickup">53</request>
+						<request type="pickup">86</request>
+						<depot>
+							<tool id="1">15</tool>
+							<tool id="2">3</tool>
+						</depot>
+						<request type="pickup">79</request>
+						<request type="pickup">108</request>
+						<depot>
+							<tool id="1">5</tool>
+							<tool id="2">4</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="7">
+					<distance>19921</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">16</request>
+						<request type="pickup">63</request>
+						<request type="pickup">129</request>
+						<depot>
+							<tool id="1">6</tool>
+							<tool id="2">4</tool>
+						</depot>
+						<request type="pickup">10</request>
+						<request type="pickup">136</request>
+						<request type="pickup">50</request>
+						<request type="pickup">51</request>
+						<depot>
+							<tool id="1">7</tool>
+							<tool id="2">4</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="8">
+					<distance>20970</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">40</request>
+						<request type="pickup">60</request>
+						<request type="pickup">37</request>
+						<request type="pickup">87</request>
+						<depot>
+							<tool id="1">16</tool>
+							<tool id="2">3</tool>
+						</depot>
+						<request type="pickup">88</request>
+						<request type="pickup">123</request>
+						<depot>
+							<tool id="1">3</tool>
+							<tool id="2">5</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="9">
+					<distance>27838</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">139</request>
+						<request type="pickup">122</request>
+						<request type="pickup">20</request>
+						<request type="pickup">67</request>
+						<request type="pickup">91</request>
+						<depot>
+							<tool id="1">22</tool>
+							<tool id="2">2</tool>
+						</depot>
+						<request type="pickup">114</request>
+						<request type="pickup">149</request>
+						<depot>
+							<tool id="1">10</tool>
+							<tool id="2">4</tool>
+						</depot>
+					</route>
+				</vehicle>
+				<vehicle id="10">
+					<distance>27811</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+						</depot>
+						<request type="pickup">46</request>
+						<request type="pickup">76</request>
+						<depot>
+							<tool id="1">9</tool>
+							<tool id="2">4</tool>
+						</depot>
+						<request type="pickup">42</request>
+						<request type="pickup">143</request>
+						<request type="pickup">48</request>
+						<depot>
+							<tool id="1">6</tool>
+							<tool id="2">4</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+	</days>
+</solution>
