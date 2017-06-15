@@ -15,4 +15,27 @@ public class Tool {
         this.count = count;
         this.cost = cost;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tool tool = (Tool) o;
+
+        if (id != tool.id) return false;
+        if (size != tool.size) return false;
+        if (count != tool.count) return false;
+        return cost == tool.cost;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + size;
+        result = 31 * result + count;
+        result = 31 * result + cost;
+        return result;
+    }
 }

@@ -12,8 +12,8 @@ import java.nio.file.Path;
  */
 public class Parser {
 
-    public static void parseInput(String input, ProblemModel model) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(new File(input)))) {
+    public static void parseInput(String inputFile, ProblemModel model) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader(new File(inputFile)))) {
             String line;
             while ((line = br.readLine()) != null) {
                 line = line.trim();
@@ -140,7 +140,7 @@ public class Parser {
             int lastDay = Integer.parseInt(chunks[3]);
             int duration = Integer.parseInt(chunks[4]);
             int toolId = Integer.parseInt(chunks[5]);
-            int numOfTools = Integer.parseInt(chunks[5]);
+            int numOfTools = Integer.parseInt(chunks[6]);
             model.requests[id] = new Request(id, depotId, firstDay, lastDay, duration, toolId, numOfTools);
         }
     }
