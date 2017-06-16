@@ -12,6 +12,7 @@ public class Request {
     public int durationInDays;
     public int toolId;
     public int numOfTools;
+    public int pickedDayForDelivery;
 
     public Request(int id, int depotId, int firstDayForDelivery, int lastDayForDelivery, int durationInDays, int toolId, int numOfTools) {
         this.id = id;
