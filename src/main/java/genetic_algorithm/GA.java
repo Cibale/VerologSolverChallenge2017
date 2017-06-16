@@ -34,7 +34,8 @@ public class GA {
                 Chromosome parent1 = Selection.selectParent(population);
                 Chromosome parent2 = Selection.selectParent(population);
                 Chromosome[] children = Crossover.crossParents(parent1, parent2, CROSSOVER_PROBABILITY);
-                Mutation.mutateChildren(children[0], children[1], MUTATION_PROBABILITY);
+                Mutation.mutateChild(children[0], MUTATION_PROBABILITY);
+                Mutation.mutateChild( children[1], MUTATION_PROBABILITY);
                 newPopulation[currentAvailableIndex++] = children[0];
                 newPopulation[currentAvailableIndex++] = children[1];
             }

@@ -14,6 +14,7 @@ public class Request {
     public int toolId;
     public int numOfTools;
     public int pickedDayForDelivery;
+    public Vehicle corespondingVehicle;
 
     public Request(int id, int customerId, int firstDayForDelivery, int lastDayForDelivery, int durationInDays, int toolId, int numOfTools) {
         this.id = id;
@@ -25,6 +26,7 @@ public class Request {
         this.numOfTools = numOfTools;
         this.negativeRequest = false;
     }
+
 
     /**
      * For negative requests, i.e. requests for picking up tools

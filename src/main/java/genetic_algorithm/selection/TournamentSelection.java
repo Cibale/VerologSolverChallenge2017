@@ -1,7 +1,7 @@
 package main.java.genetic_algorithm.selection;
 
 import main.java.genetic_algorithm.Chromosome;
-import main.java.genetic_algorithm.EvaluationFunction;
+import main.java.genetic_algorithm.evaluation.EvaluationFunction;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -25,7 +25,7 @@ public class TournamentSelection extends Selection{
         Integer indices[] = new Integer[k];
         for (int currentIndex = 0; currentIndex < k; currentIndex++){
             while (true) {
-                int selected = ThreadLocalRandom.current().nextInt(population.length);
+                Integer selected = ThreadLocalRandom.current().nextInt(population.length);
                 boolean alreadyIn = false;
                 for(int i=0; i < currentIndex; i++){
                     if (indices[i] == selected){
@@ -41,7 +41,7 @@ public class TournamentSelection extends Selection{
 
         }
 
-        Arrays.sort(indices,(a,b)-> Integer.compare(evaluationFunction.evaluate(population[a]),evaluationFunction.evaluate(population[b])));
+        Arrays.sort(indices,(a,b)-> evaluationFunction.evaluate(population[a]).compareTo(evaluationFunction.evaluate(population[b])));
 
         //return the best one
         return population[indices[0]];
