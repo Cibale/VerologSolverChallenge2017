@@ -31,6 +31,15 @@ public class Request {
      */
     public Request(Request positiveRequest) {
         //TODO
+        this.id = positiveRequest.id;
+        this.customerId = positiveRequest.id;
+        this.firstDayForDelivery = positiveRequest.pickedDayForDelivery + positiveRequest.durationInDays;
+        this.lastDayForDelivery = this.firstDayForDelivery;
+        this.pickedDayForDelivery = this.firstDayForDelivery;
+        this.durationInDays = 1;
+        this.toolId = positiveRequest.toolId;
+        this.numOfTools = positiveRequest.numOfTools;
+        this.negativeRequest = true;
     }
 
     @Override
@@ -41,24 +50,28 @@ public class Request {
         Request request = (Request) o;
 
         if (id != request.id) return false;
+        if (negativeRequest != request.negativeRequest) return false;
         if (customerId != request.customerId) return false;
         if (firstDayForDelivery != request.firstDayForDelivery) return false;
         if (lastDayForDelivery != request.lastDayForDelivery) return false;
         if (durationInDays != request.durationInDays) return false;
         if (toolId != request.toolId) return false;
-        return numOfTools == request.numOfTools;
+        if (numOfTools != request.numOfTools) return false;
+        return pickedDayForDelivery == request.pickedDayForDelivery;
 
     }
 
     @Override
     public int hashCode() {
         int result = id;
+        result = 31 * result + (negativeRequest ? 1 : 0);
         result = 31 * result + customerId;
         result = 31 * result + firstDayForDelivery;
         result = 31 * result + lastDayForDelivery;
         result = 31 * result + durationInDays;
         result = 31 * result + toolId;
         result = 31 * result + numOfTools;
+        result = 31 * result + pickedDayForDelivery;
         return result;
     }
 }
