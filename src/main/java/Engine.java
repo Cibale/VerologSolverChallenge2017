@@ -1,5 +1,8 @@
 package main.java;
 
+import main.java.genetic_algorithm.Chromosome;
+import main.java.genetic_algorithm.GA;
+
 import java.util.Random;
 
 /**
@@ -42,6 +45,10 @@ public class Engine {
         GA ga = new GA();
         ga.start(model);
         constructSolution(ga.bestSolution, model);
+    }
+
+    // initialize this.bestSolution
+    private void constructSolution(Chromosome bestSolution, ProblemModel model) {
     }
 
 }
