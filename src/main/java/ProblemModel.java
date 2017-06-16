@@ -22,6 +22,8 @@ public class ProblemModel {
     public Tool[] tools;
     public Point[] coordinates;
     public Request[] requests;
+    // requests for picking up tools
+    public Request[] negativeRequests;
 
     public int[][] distanceMatrix;
 }

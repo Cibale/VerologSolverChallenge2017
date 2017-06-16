@@ -5,6 +5,7 @@ package main.java;
  */
 public class Request {
     public int id;
+    public boolean negativeRequest;
     public int customerId;
     public int firstDayForDelivery;
     public int lastDayForDelivery;
@@ -22,6 +23,14 @@ public class Request {
         this.durationInDays = durationInDays;
         this.toolId = toolId;
         this.numOfTools = numOfTools;
+        this.negativeRequest = false;
+    }
+
+    /**
+     * For negative requests, i.e. requests for picking up tools
+     */
+    public Request(Request positiveRequest) {
+        //TODO
     }
 
     @Override
