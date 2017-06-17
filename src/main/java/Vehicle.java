@@ -21,8 +21,9 @@ public class Vehicle {
     public boolean usedVehicle(){
         return requestList.size() != 0;
     }
+
     public void optimizeTSP(){
-        //update distancCOst here
+        //update distancCost here
         return;
     }
 }

@@ -33,17 +33,15 @@ public class Engine {
      * i.e. requests for picking up those tools from customers.
      */
     private void createNegativeRequests() {
-            model.negativeRequests = new Request[model.requests.length];
-        for (int i = 0; i < model.requests.length; i++) {
-            Request request = model.requests[i];
-            Request negativeRequest = new Request(request);
-            model.negativeRequests[i] = negativeRequest;
+        model.negativeRequests = new Request[model.requests.length];
+        for (int i = 0; i < model.negativeRequests.length; i++) {
+            model.negativeRequests[i] = model.requests[i].getNegativeRequest();
         }
     }
 
     public void run() {
-        GA ga = new GA();
-        ga.start(model);
+        GA ga = new GA(model);
+        ga.start();
         constructSolution(ga.bestSolution, model);
     }
 

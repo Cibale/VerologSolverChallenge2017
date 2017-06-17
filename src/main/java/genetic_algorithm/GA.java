@@ -11,6 +11,7 @@ import main.java.genetic_algorithm.selection.Selection;
 import main.java.genetic_algorithm.selection.TournamentSelection;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Created by mmatak on 6/16/17.
@@ -23,6 +24,7 @@ public class GA {
     public static double CROSSOVER_PROBABILITY = 0.75;
     public static double MUTATION_PROBABILITY = 0.1;
     public static int K_TOURNAMENT_SELECTION = 3;
+    public static Random rand = new Random();
     public Chromosome[] population;
     private EvaluationFunction evaluationFunction;
     private Crossover crossover;
@@ -42,40 +44,47 @@ public class GA {
     public void start() {
         initializePopulation(population);
         evaluationFunction.evaluatePopulation(population);
-        for(int i = 0; i < NUMBER_OF_GENERATIONS; i++){
+        for (int i = 0; i < NUMBER_OF_GENERATIONS; i++) {
             // best solutions are on the lower indexes
             sortPopulation(population);
             Chromosome[] newPopulation = new Chromosome[population.length];
             newPopulation[0] = population[0];
             newPopulation[1] = population[1];
             int currentAvailableIndex = 2;
-            for (int j = 0; j < POPULATION_SIZE/2 - 1; j++){
+            for (int j = 0; j < POPULATION_SIZE / 2 - 1; j++) {
                 Chromosome parent1 = selection.selectParent(population);
                 Chromosome parent2 = selection.selectParent(population);
                 Chromosome[] children = crossover.crossParents(parent1, parent2, CROSSOVER_PROBABILITY);
                 mutation.mutateChild(children[0], MUTATION_PROBABILITY);
-                mutation.mutateChild( children[1], MUTATION_PROBABILITY);
+                mutation.mutateChild(children[1], MUTATION_PROBABILITY);
                 newPopulation[currentAvailableIndex++] = children[0];
                 newPopulation[currentAvailableIndex++] = children[1];
             }
             population = Arrays.copyOf(newPopulation, POPULATION_SIZE);
             evaluationFunction.evaluatePopulation(population);
         }
+        this.bestSolution = population[0];
     }
 
     /**
      * Initialize population to some random values.
+     *
      * @param population Array to be instanced with chromosomes.
      */
     private void initializePopulation(Chromosome[] population) {
-
+        for(int i = 0; i < population.length; i++){
+            population[i] = new Chromosome(model);
+            population[i].initialize();
+        }
     }
 
     /**
      * Sort population by their totalCost.
      * Solutions with less cost after sorting must be on lower indexes.
+     *
      * @param population Population to sort.
      */
     private void sortPopulation(Chromosome[] population) {
+        //TODO
     }
 }

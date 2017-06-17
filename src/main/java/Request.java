@@ -14,9 +14,16 @@ public class Request {
     public int toolId;
     public int numOfTools;
     public int pickedDayForDelivery;
-    public Vehicle corespondingVehicle;
+    public Vehicle correspondingVehicle;
 
-    public Request(int id, int customerId, int firstDayForDelivery, int lastDayForDelivery, int durationInDays, int toolId, int numOfTools) {
+    public Request(int id,
+                   int customerId,
+                   int firstDayForDelivery,
+                   int lastDayForDelivery,
+                   int durationInDays,
+                   int toolId,
+                   int numOfTools,
+                   boolean negativeRequest) {
         this.id = id;
         this.customerId = customerId;
         this.firstDayForDelivery = firstDayForDelivery;
@@ -24,24 +31,37 @@ public class Request {
         this.durationInDays = durationInDays;
         this.toolId = toolId;
         this.numOfTools = numOfTools;
-        this.negativeRequest = false;
+        this.negativeRequest = negativeRequest;
     }
 
+    /**
+     * Hard copy constructor.
+     *
+     * @param request request to be copied
+     */
+    public Request(Request request) {
+        this(
+                request.id,
+                request.customerId,
+                request.firstDayForDelivery,
+                request.lastDayForDelivery,
+                request.durationInDays,
+                request.toolId,
+                request.numOfTools,
+                request.negativeRequest
+        );
+    }
 
     /**
-     * For negative requests, i.e. requests for picking up tools
+     * Creates negative request from this one. Id of those requests is the same.
+     *
+     * @return negative request.
      */
-    public Request(Request positiveRequest) {
-        //TODO
-        this.id = positiveRequest.id;
-        this.customerId = positiveRequest.id;
-        this.firstDayForDelivery = positiveRequest.pickedDayForDelivery + positiveRequest.durationInDays;
-        this.lastDayForDelivery = this.firstDayForDelivery;
-        this.pickedDayForDelivery = this.firstDayForDelivery;
-        this.durationInDays = 1;
-        this.toolId = positiveRequest.toolId;
-        this.numOfTools = positiveRequest.numOfTools;
+    public Request getNegativeRequest() {
+        Request negativeRequest = new Request(this);
+        negativeRequest.pickedDayForDelivery = this.pickedDayForDelivery + this.durationInDays;
         this.negativeRequest = true;
+        return negativeRequest;
     }
 
     @Override
