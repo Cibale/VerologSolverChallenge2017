@@ -15,6 +15,8 @@ public class Chromosome {
     public Request[] requests;
     // less is better
     public int totalCost;
+    //cost without punishments
+    public int realCost;
     public ProblemModel model;
 
     /**
@@ -52,7 +54,7 @@ public class Chromosome {
         for (int i = 0; i < vehicles.length; i++) {
             vehicles[i] = new Vehicle();
         }
-        for (int i = 0; i < requests.length; i++){
+        for (int i = 0; i < requests.length; i++) {
             int vehicleIndex = ThreadLocalRandom.current().nextInt(vehicles.length);
             requests[i].correspondingVehicle = vehicles[vehicleIndex];
             vehicles[vehicleIndex].addRequest(requests[i]);

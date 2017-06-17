@@ -47,6 +47,7 @@ public abstract class EvaluationFunction {
         int tdtc = calculateTDTC(chromosome);
         int tc = calculateTC(chromosome);
         int cost = trvc + tuvc + tdtc + tc;
+        chromosome.realCost = cost;
         int punishment = calculatePunishment(chromosome);
         return cost + punishment;
     }

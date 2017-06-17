@@ -42,11 +42,8 @@ public class Engine {
     public void run() {
         GA ga = new GA(model);
         ga.start();
-        constructSolution(ga.bestSolution, model);
-    }
-
-    // initialize this.bestSolution
-    private void constructSolution(Chromosome bestSolution, ProblemModel model) {
+        bestSolution = new Solution(model);
+        bestSolution.constructFrom(ga.bestSolution);
     }
 
 }

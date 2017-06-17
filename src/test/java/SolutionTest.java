@@ -2,10 +2,7 @@ package test.java;
 
 import static org.junit.Assert.assertEquals;
 
-import main.java.Day;
-import main.java.Route;
-import main.java.Solution;
-import main.java.Visit;
+import main.java.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -18,7 +15,7 @@ import java.util.List;
 public class SolutionTest {
     @Test
     public void toStringTest() {
-        Solution solution = new Solution();
+        Solution solution = new Solution(new ProblemModel());
         solution.days = new ArrayList<>();
         Day day = new Day();
         solution.days.add(day);
