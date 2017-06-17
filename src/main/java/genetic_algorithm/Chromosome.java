@@ -11,7 +11,8 @@ import java.util.Arrays;
 public class Chromosome {
     public Vehicle[] vehicles;
     public Request[] requests;
-    public int partlyCost;
+    // less is better
+    public int totalCost;
 
     public Chromosome(Vehicle[] vehicles, Request[] requests) {
         this.vehicles = Arrays.copyOf(vehicles,vehicles.length);

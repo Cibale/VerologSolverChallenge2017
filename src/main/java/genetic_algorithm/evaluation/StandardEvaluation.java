@@ -8,6 +8,7 @@ import main.java.genetic_algorithm.Chromosome;
  * Created by felentovic on 16.06.17..
  */
 public class StandardEvaluation extends EvaluationFunction {
+    //TODO: Evaluation doesn't seem total
 
 
     public StandardEvaluation(ProblemModel model) {

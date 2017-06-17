@@ -13,4 +13,9 @@ public abstract class EvaluationFunction {
                 this.model = model;
         }
         public abstract Integer evaluate(Chromosome chromosome);
+        public void evaluatePopulation(Chromosome[] population){
+                for(int i = 0; i < population.length; i++){
+                        population[i].totalCost = evaluate(population[i]);
+                }
+        }
 }
