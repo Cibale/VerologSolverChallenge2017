@@ -25,5 +25,5 @@ public class ProblemModel {
     // requests for picking up tools
     public Request[] negativeRequests;
 
-    public int[][] distanceMatrix;
+    public static int[][] distanceMatrix;
 }

@@ -45,7 +45,7 @@ public class ParserTest {
 
         assertEquals(model.requests.length, 151);
 
-        Request request = new Request(1,45,2,3,1,1,2);
+        Request request = new Request(1,45,2,3,1,1,2, false);
         assertEquals(model.requests[1], request);
 
 

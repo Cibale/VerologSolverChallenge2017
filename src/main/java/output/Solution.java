@@ -1,5 +1,6 @@
-package main.java;
+package main.java.output;
 
+import main.java.ProblemModel;
 import main.java.genetic_algorithm.Chromosome;
 
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class Solution {
         1. sort requests per days (lower day - lower index)
         2. for each day spent:
             2.1. check number of vehicles used that day (update this number as maxNumOfVehicles)
-            2.2. create routes per vehicle
+            2.2. create routes per vehicle (*you have this in vehicle class*)
             2.2. set depot values (based on previous day + routes that day)
             2.3. for each vehicle that day:
                 2.3.1. write his route

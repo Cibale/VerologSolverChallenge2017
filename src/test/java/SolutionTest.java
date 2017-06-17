@@ -2,7 +2,8 @@ package test.java;
 
 import static org.junit.Assert.assertEquals;
 
-import main.java.*;
+import main.java.ProblemModel;
+import main.java.output.*;
 import org.junit.Test;
 
 import java.util.ArrayList;

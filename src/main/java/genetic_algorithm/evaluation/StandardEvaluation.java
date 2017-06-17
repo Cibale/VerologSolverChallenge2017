@@ -17,6 +17,8 @@ public class StandardEvaluation extends EvaluationFunction {
 
     @Override
     int calculatePunishment(Chromosome chromosome) {
+        //punishment for: 1.) max distance traveled
+        //                2.) load of the vehicle exceeded
         return 0;
     }
 

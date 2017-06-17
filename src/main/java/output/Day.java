@@ -1,4 +1,4 @@
-package main.java;
+package main.java.output;
 
 import java.util.List;
 import java.util.Map;

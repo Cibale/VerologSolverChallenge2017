@@ -1,5 +1,7 @@
 package main.java;
 
+import main.java.output.Solution;
+
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -141,7 +143,7 @@ public class Parser {
             int duration = Integer.parseInt(chunks[4]);
             int toolId = Integer.parseInt(chunks[5]);
             int numOfTools = Integer.parseInt(chunks[6]);
-            model.requests[id] = new Request(id, depotId, firstDay, lastDay, duration, toolId, numOfTools);
+            model.requests[id] = new Request(id, depotId, firstDay, lastDay, duration, toolId, numOfTools, false);
         }
     }
 

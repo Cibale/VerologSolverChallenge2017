@@ -45,29 +45,48 @@ public abstract class EvaluationFunction {
         int trvc = calculateTRVC(chromosome);
         int tuvc = calculateTUVC(chromosome);
         int tdtc = calculateTDTC(chromosome);
-        int tc = calculateTC(chromosome);
-        int cost = trvc + tuvc + tdtc + tc;
+        //int tc = calculateTC(chromosome);
+        int cost = trvc + tuvc + tdtc;// + tc;
         chromosome.realCost = cost;
         int punishment = calculatePunishment(chromosome);
         return cost + punishment;
     }
 
-    //TODO
-
-    private int calculateTC(Chromosome chromosome) {
-        return 4;
-    }
+    /**
+     * This is always the same. This cost is optimized on the higher level when picking day for delivery request
+     * @param chromosome
+     * @return
+     */
+//    private int calculateTC(Chromosome chromosome) {
+//        //cost for using tool
+//    }
 
     private int calculateTDTC(Chromosome chromosome) {
-        return 3;
+        int totalDist = 0;
+        for (int i = 0; i < chromosome.vehicles.length; i++) {
+            totalDist += chromosome.vehicles[i].distance;
+        }
+
+        return totalDist * model.distanceCost;
     }
 
-    private int calculateTUVC(Chromosome chromosome){
-        return 2;
+    private int calculateTUVC(Chromosome chromosome) {
+        //for each vehicle add number of used days
+        int totalUsedDays = 0;
+        for (int i = 0; i < chromosome.vehicles.length; i++) {
+            totalUsedDays += chromosome.vehicles[i].dayRouteMap.size();
+        }
+        return totalUsedDays * model.vehicleDayCost;
     }
 
     private int calculateTRVC(Chromosome chromosome) {
-        return 1;
+        int numOfUsedVehicle = 0;
+        for (int i = 0; i < chromosome.vehicles.length; i++) {
+            if (chromosome.vehicles[i].usedVehicle()) {
+                numOfUsedVehicle++;
+            }
+        }
+        return numOfUsedVehicle * model.vehicleCost;
     }
 
 

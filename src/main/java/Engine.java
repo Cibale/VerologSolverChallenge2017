@@ -2,6 +2,7 @@ package main.java;
 
 import main.java.genetic_algorithm.Chromosome;
 import main.java.genetic_algorithm.GA;
+import main.java.output.Solution;
 
 import java.util.Random;
 

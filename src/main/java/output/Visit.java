@@ -1,4 +1,4 @@
-package main.java;
+package main.java.output;
 
 /**
  * Tells us more information about vehicle which visits depot.
