@@ -11,7 +11,7 @@ import main.java.genetic_algorithm.selection.Selection;
 import main.java.genetic_algorithm.selection.TournamentSelection;
 
 import java.util.Arrays;
-import java.util.Random;
+import java.util.Comparator;
 
 /**
  * Created by mmatak on 6/16/17.
@@ -24,7 +24,6 @@ public class GA {
     public static double CROSSOVER_PROBABILITY = 0.75;
     public static double MUTATION_PROBABILITY = 0.1;
     public static int K_TOURNAMENT_SELECTION = 3;
-    public static Random rand = new Random();
     public Chromosome[] population;
     private EvaluationFunction evaluationFunction;
     private Crossover crossover;
@@ -85,6 +84,6 @@ public class GA {
      * @param population Population to sort.
      */
     private void sortPopulation(Chromosome[] population) {
-        //TODO
+        Arrays.sort(population, Comparator.comparingInt(o -> o.totalCost));
     }
 }

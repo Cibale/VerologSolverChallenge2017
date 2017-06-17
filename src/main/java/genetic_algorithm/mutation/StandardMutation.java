@@ -15,7 +15,7 @@ public class StandardMutation extends Mutation {
               if (Math.random() < MUTATION_PROBABILITY){
                   int randIndex = ThreadLocalRandom.current().nextInt(child.vehicles.length);
                   child.vehicles[randIndex].removeRequest(child.requests[i]);
-                  child.requests[i].corespondingVehicle = child.vehicles[randIndex];
+                  child.requests[i].correspondingVehicle = child.vehicles[randIndex];
                   child.vehicles[randIndex].addRequest(child.requests[i]);
               }
           }

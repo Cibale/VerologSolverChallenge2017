@@ -54,7 +54,7 @@ public class Chromosome {
         }
         for (int i = 0; i < requests.length; i++){
             int vehicleIndex = ThreadLocalRandom.current().nextInt(vehicles.length);
-            requests[i].corespondingVehicle = vehicles[vehicleIndex];
+            requests[i].correspondingVehicle = vehicles[vehicleIndex];
             vehicles[vehicleIndex].addRequest(requests[i]);
         }
     }
