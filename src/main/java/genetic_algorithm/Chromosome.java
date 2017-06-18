@@ -58,7 +58,7 @@ public class Chromosome {
             requests[index++] = new Request(model.negativeRequests[i]);
         }
         for (int i = 0; i < vehicles.length; i++) {
-            vehicles[i] = new Vehicle();
+            vehicles[i] = new Vehicle(this.model);
         }
         for (int i = 0; i < requests.length; i++){
             int vehicleIndex = ThreadLocalRandom.current().nextInt(vehicles.length);
@@ -66,7 +66,7 @@ public class Chromosome {
             vehicles[vehicleIndex].addRequest(requests[i]);
         }
         for (int i = 0; i < vehicles.length; i++) {
-            vehicles[i].optimizeDayRoute();
+            vehicles[i].updateDayRoutes();
         }
 
     }

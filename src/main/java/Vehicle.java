@@ -13,13 +13,15 @@ public class Vehicle {
     private Set<Integer> changedDays;
     public int totalVehicleDistance;
     public int totalExceededLoad;
+    private ProblemModel model;
 
-    public Vehicle() {
+    public Vehicle(ProblemModel model) {
         this.requestList = new ArrayList<>();
         this.changedDays = new HashSet<>();
         this.dayRouteMap = new HashMap<>();
         this.totalVehicleDistance = 0;
         this.totalExceededLoad = 0;
+        this.model = model;
     }
 
     public Vehicle(Vehicle vehicle) {
@@ -29,6 +31,7 @@ public class Vehicle {
         this.totalVehicleDistance = vehicle.totalVehicleDistance;
         this.totalVehicleDistance = 0;
         this.totalExceededLoad = 0;
+        this.model = vehicle.model;
     }
 
     public List<Request> getRequestList() {
@@ -38,7 +41,7 @@ public class Vehicle {
     public void addRequest(Request newRequest) {
         DayRoute dayRoute = dayRouteMap.get(newRequest.pickedDayForDelivery);
         if (dayRoute == null) {
-            dayRoute = new DayRoute();
+            dayRoute = new DayRoute(this.model);
             dayRouteMap.put(newRequest.pickedDayForDelivery, dayRoute);
         }
         changedDays.add(newRequest.pickedDayForDelivery);
@@ -61,37 +64,46 @@ public class Vehicle {
     }
 
     /**
-     * Optimizes day route in one day(several visits to depot is possible).This method updates vehicle traveled totalVehicleDistance and maxLoad.
-     * Optimizes day route in a way that can create more visits to depot in one day. Each route starts and ends with depot so it can create more routes in one day.
+     * Updates only dayRoute that have changes in their requests. Updates totalVehicleDistance and totalExceededLoad.
+     *
      */
-    public void optimizeDayRoute() {
+    public void updateDayRoutes() {
         // optimize only changed days
         for (Integer day : changedDays) {
             DayRoute dayRoute = dayRouteMap.get(day);
             //first delete old dayRoute values
-            this.totalVehicleDistance -= dayRoute.totalRouteDistance;
+            this.totalVehicleDistance -= dayRoute.totalDayRouteDistance;
             for (Integer load : dayRoute.routeMaxLoad){
-                if (load > ProblemModel.capacity){
-                    this.totalExceededLoad -= load - ProblemModel.capacity;
+                if (load > model.capacity){
+                    this.totalExceededLoad -= load - model.capacity;
                 }
             }
 
-            dayRoute.routes.clear();
-            //TODO: Optimize dayRoute, currently only one route
-            List<Request> route = new ArrayList<>();
-            dayRoute.routes.add(route);
-            for (Request request : dayRoute.requests){
-                route.add(request);
-            }
-            dayRoute.update();
-            this.totalVehicleDistance += dayRoute.totalRouteDistance;
+            optimizeDayRoute(dayRoute);
+
+            this.totalVehicleDistance += dayRoute.totalDayRouteDistance;
             for (Integer load : dayRoute.routeMaxLoad){
-                if (load > ProblemModel.capacity){
-                    this.totalExceededLoad += load - ProblemModel.capacity;
+                if (load > model.capacity){
+                    this.totalExceededLoad += load - model.capacity;
                 }
             }
 
         }
+
+    }
+
+    /**
+     * So far only creates one route
+     * @param dayRoute
+     */
+    private void optimizeDayRoute(DayRoute dayRoute){
+        dayRoute.routes.clear();
+        List<Request> route = new ArrayList<>();
+        dayRoute.routes.add(route);
+        for (Request request : dayRoute.requests){
+            route.add(request);
+        }
+        dayRoute.update();
 
     }
 
