@@ -74,8 +74,7 @@ public class Parser {
                 }
                 if (line.startsWith("REQUESTS")) {
                     int numOfRequests = Integer.parseInt(line.split("=")[1].trim());
-                    //because IDs of requests start from 1, not from 0 as array indexes
-                    model.requests = new Request[numOfRequests + 1];
+                    model.requests = new Request[numOfRequests];
                     parseRequests(numOfRequests, model, br);
                     continue;
                 }
@@ -136,7 +135,8 @@ public class Parser {
         for (int i = 0; i < numOfRequests; i++) {
             line = br.readLine().trim();
             String[] chunks = line.split("\\t");
-            int id = Integer.parseInt(chunks[0]);
+            // because it starts from 1 in input
+            int id = Integer.parseInt(chunks[0]) - 1;
             int depotId = Integer.parseInt(chunks[1]);
             int firstDay = Integer.parseInt(chunks[2]);
             int lastDay = Integer.parseInt(chunks[3]);

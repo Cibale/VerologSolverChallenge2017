@@ -20,11 +20,11 @@ public class StandardEvaluation extends EvaluationFunction {
     int calculatePunishment(Chromosome chromosome) {
         //punishment for: 1.) exceeded distance traveled
         //                2.) exceeded load capacity
-        int totalExceedeDistance = 0;
+        int totalExceededDistance = 0;
         int totalExceededLoad = 0;
         for (Vehicle vehicle : chromosome.vehicles){
                 if (vehicle.totalVehicleDistance > model.maxTripDistance){
-                    totalExceedeDistance += vehicle.totalVehicleDistance - model.maxTripDistance;
+                    totalExceededDistance += vehicle.totalVehicleDistance - model.maxTripDistance;
                 }
                 for (DayRoute dayRoute : vehicle.dayRouteMap.values()){
                     for (Integer maxRouteLoad : dayRoute.routeMaxLoad){
@@ -34,7 +34,7 @@ public class StandardEvaluation extends EvaluationFunction {
                     }
                 }
         }
-        return totalExceededLoad * model.capacity + totalExceedeDistance * model.maxTripDistance;
+        return totalExceededLoad * model.capacity + totalExceededDistance * model.maxTripDistance;
     }
 
 
