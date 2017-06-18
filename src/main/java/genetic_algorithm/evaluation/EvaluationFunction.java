@@ -26,9 +26,9 @@ public abstract class EvaluationFunction {
      * Let TUVC be total cost of using all the vehicles.
      * Then TUVC = sum by each day in time horizont: numberOfUsedCarsThatDay * UVC
      * <p>
-     * Let DTC be cost per unit distance traveled.
-     * Let TDTC be total cost for all distance traveled costs.
-     * Then TDTC =  sum by each vehicle: sum by each route travelled: distance per route
+     * Let DTC be cost per unit totalVehicleDistance traveled.
+     * Let TDTC be total cost for all totalVehicleDistance traveled costs.
+     * Then TDTC =  sum by each vehicle: sum by each route travelled: totalVehicleDistance per route
      * <p>
      * Let TC be total cost for all used tools.
      * Then TC = sum by kinds of tools used: cost of using that kind of tool
@@ -64,7 +64,7 @@ public abstract class EvaluationFunction {
     private int calculateTDTC(Chromosome chromosome) {
         int totalDist = 0;
         for (int i = 0; i < chromosome.vehicles.length; i++) {
-            totalDist += chromosome.vehicles[i].distance;
+            totalDist += chromosome.vehicles[i].totalVehicleDistance;
         }
 
         return totalDist * model.distanceCost;

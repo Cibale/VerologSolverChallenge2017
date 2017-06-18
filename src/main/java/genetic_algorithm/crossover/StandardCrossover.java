@@ -28,8 +28,8 @@ public class StandardCrossover extends Crossover {
             child2.requests[i].correspondingVehicle.addRequest(child2.requests[i]);
         }
         for (int i = 0; i < parent1.vehicles.length; i++){
-            child1.vehicles[i].optimizeRoute();
-            child2.vehicles[i].optimizeRoute();
+            child1.vehicles[i].optimizeDayRoute();
+            child2.vehicles[i].optimizeDayRoute();
         }
 
         return new Chromosome[]{child1, child2};

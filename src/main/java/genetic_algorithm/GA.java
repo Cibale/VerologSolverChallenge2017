@@ -59,7 +59,10 @@ public class GA {
                 newPopulation[currentAvailableIndex++] = children[0];
                 newPopulation[currentAvailableIndex++] = children[1];
             }
-            population = Arrays.copyOf(newPopulation, POPULATION_SIZE);
+            population = new  Chromosome[POPULATION_SIZE];
+            for (int j = 0; j < POPULATION_SIZE; j++){
+                population[j] = new Chromosome(newPopulation[j]);
+            }
             evaluationFunction.evaluatePopulation(population);
         }
         this.bestSolution = population[0];

@@ -10,7 +10,7 @@ public class ProblemModel {
     public String name;
 
     public int days;
-    public int capacity;
+    public static int capacity;
     public int maxTripDistance;
     public int depotCoordinateId;
 
@@ -19,7 +19,7 @@ public class ProblemModel {
     public int distanceCost;
 
     // id is index of array
-    public Tool[] tools;
+    public static Tool[] tools;
     public Point[] coordinates;
     public Request[] requests;
     // requests for picking up tools

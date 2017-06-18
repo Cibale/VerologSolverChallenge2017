@@ -4,7 +4,6 @@ import main.java.ProblemModel;
 import main.java.Request;
 import main.java.Vehicle;
 
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -67,7 +66,7 @@ public class Chromosome {
             vehicles[vehicleIndex].addRequest(requests[i]);
         }
         for (int i = 0; i < vehicles.length; i++) {
-            vehicles[i].optimizeRoute();
+            vehicles[i].optimizeDayRoute();
         }
 
     }
