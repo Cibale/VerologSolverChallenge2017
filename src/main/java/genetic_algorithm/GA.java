@@ -67,6 +67,7 @@ public class GA {
             evaluationFunction.evaluatePopulation(population);
         }
         this.bestSolution = population[0];
+        System.out.println(bestSolution.totalCost+" "+bestSolution.realCost);
     }
 
     /**

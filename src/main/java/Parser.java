@@ -7,7 +7,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
 /**
  * Created by mmatak on 6/15/17.
@@ -172,6 +174,7 @@ public class Parser {
         }
     }
 
-    public static void writeOutput(Path output, Solution bestSolution) {
+    public static void writeOutput(Path output, Solution bestSolution) throws IOException {
+        Files.write(output,bestSolution.toString().getBytes(), StandardOpenOption.CREATE);
     }
 }

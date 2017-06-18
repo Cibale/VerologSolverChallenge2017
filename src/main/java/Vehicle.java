@@ -39,6 +39,7 @@ public class Vehicle {
         this.chromosome = chromosome;
         for (Integer requestId : vehicle.requestListIds){
             addRequest(requestId);
+            chromosome.requests[requestId].correspondingVehicleId = this.id;
         }
     }
 
@@ -58,9 +59,6 @@ public class Vehicle {
     public void removeRequest(Integer requestId) {
         Request request = chromosome.requests[requestId];
         DayRoute dayRoute = dayRouteMap.get(request.pickedDayForDelivery);
-        if (dayRoute == null){
-            System.out.println("Day route is null - error");
-        }
         changedDays.add(request.pickedDayForDelivery);
         dayRoute.remove(request);
         requestListIds.remove(requestId);

@@ -1,5 +1,6 @@
 package main.java.output;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +13,9 @@ public class Day {
     public int[] startDepot;
     public int[] finishDepot;
     public List<Integer> usedVehiclesSorted;
-    public Map<Integer, Route> vehicleIdRoute;
-    public Map<Integer, List<Visit>> vehicleIdVisits;
-    public Map<Integer, Integer> vehicleIdCost;
+    public Map<Integer, Route> vehicleIdRoute = new HashMap<>();
+    public Map<Integer, List<Visit>> vehicleIdVisits = new HashMap<>();
+    public Map<Integer, Integer> vehicleIdCost = new HashMap<>();
 
     public Day(int id) {
         this.id = id;

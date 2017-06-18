@@ -20,8 +20,8 @@ public class StandardMutation extends Mutation {
 
 
                 int randIndex = ThreadLocalRandom.current().nextInt(child.vehicles.length);
-                child.requests[i].correspondingVehicleId = child.vehicles[randIndex].id;
                 child.vehicles[randIndex].addRequest(i);
+            child.requests[i].correspondingVehicleId = child.vehicles[randIndex].id;
 
         }
 

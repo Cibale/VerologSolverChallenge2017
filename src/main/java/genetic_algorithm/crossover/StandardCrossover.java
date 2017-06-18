@@ -21,19 +21,16 @@ public class StandardCrossover extends Crossover {
         Chromosome child1 = new Chromosome(parent1);
         Chromosome child2 = new Chromosome(parent2);
         for (int i = 0; i < splitPoint; i++) {
-            Request child1Request = child1.requests[i];
-            Vehicle child1Vehicle = child1.vehicles[child1Request.correspondingVehicleId];
 
-            child1Vehicle.removeRequest(i);
-            child1Request.correspondingVehicleId = parent2.requests[i].correspondingVehicleId;
-            child1Vehicle.addRequest(i);
+            child1.vehicles[child1.requests[i].correspondingVehicleId].removeRequest(i);
+            child1.requests[i].correspondingVehicleId = parent2.requests[i].correspondingVehicleId;
+            child1.vehicles[child1.requests[i].correspondingVehicleId].addRequest(i);
 
-            Request child2Request = child2.requests[i];
-            Vehicle child2Vehicle = child2.vehicles[child2Request.correspondingVehicleId];
 
-            child2Vehicle.removeRequest(i);
-            child2Request.correspondingVehicleId = parent1.requests[i].correspondingVehicleId;
-            child2Vehicle.addRequest(i);
+
+            child2.vehicles[child2.requests[i].correspondingVehicleId].removeRequest(i);
+            child2.requests[i].correspondingVehicleId = parent1.requests[i].correspondingVehicleId;
+            child2.vehicles[child2.requests[i].correspondingVehicleId].addRequest(i);
         }
         for (int i = 0; i < parent1.vehicles.length; i++) {
             child1.vehicles[i].updateDayRoutes();

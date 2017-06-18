@@ -69,8 +69,8 @@ public class Chromosome {
         }
         for (int i = 0; i < requests.length; i++) {
             int vehicleIndex = ThreadLocalRandom.current().nextInt(vehicles.length);
-            requests[i].correspondingVehicleId = vehicleIndex;
             vehicles[vehicleIndex].addRequest(i);
+            requests[i].correspondingVehicleId = vehicleIndex;
         }
         for (int i = 0; i < vehicles.length; i++) {
             vehicles[i].updateDayRoutes();
