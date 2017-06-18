@@ -89,7 +89,7 @@ public class Solution {
             if (chromosome.requests[i].pickedDayForDelivery == currentDay) {
                 currentDayIndexEnd = i;
             } else {
-                processDay(chromosome.requests, currentDayIndexStart, currentDayIndexEnd, currentDay);
+                processDay(chromosome.requests, chromosome.vehicles, currentDayIndexStart, currentDayIndexEnd, currentDay);
                 currentDay = chromosome.requests[i].pickedDayForDelivery;
                 currentDayIndexStart = i;
                 currentDayIndexEnd = i;
@@ -111,7 +111,7 @@ public class Solution {
                     2.3.4. update how many which kind of tools is used
                 2.3.3. write his DISTANCE COST for that day
      */
-    private void processDay(Request[] requests, int indexStart, int indexEnd, int currentDay) {
+    private void processDay(Request[] requests, Vehicle[] vehicles, int indexStart, int indexEnd, int currentDay) {
         // check number of vehicles used that day
         Set<Vehicle> vehiclesUsedThisDay = new HashSet<>();
         Day previousDay;
@@ -121,7 +121,7 @@ public class Solution {
             previousDay = null;
         }
         for (int i = indexStart; i <= indexEnd; i++) {
-            vehiclesUsedThisDay.add(requests[i].correspondingVehicle);
+            vehiclesUsedThisDay.add(vehicles[requests[i].correspondingVehicleId]);
         }
         if (vehiclesUsedThisDay.size() > maxNumOfVehicles) {
             maxNumOfVehicles = vehiclesUsedThisDay.size();

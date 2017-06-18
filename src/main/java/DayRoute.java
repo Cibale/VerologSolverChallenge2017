@@ -32,9 +32,9 @@ public class DayRoute {
     public DayRoute(ProblemModel model){
         this.requests = new ArrayList<>();
         this.routes = new ArrayList<>();
-        this.routeMaxLoad = new LinkedList<>();
         this.totalDayRouteDistance = 0;
         this.model = model;
+        this.routeMaxLoad = new ArrayList<>();
     }
 
     public void add(Request request){
@@ -51,7 +51,7 @@ public class DayRoute {
     public void update(){
         this.totalDayRouteDistance = 0;
 
-        this.routeMaxLoad = new LinkedList<>();
+        this.routeMaxLoad.clear();
         //for each route calculate maximal load and distance travelled
         for (List<Request> route : this.routes){
             //add distance from the depot to frist customer

@@ -14,7 +14,7 @@ public class Request {
     public int toolId;
     public int numOfTools;
     public int pickedDayForDelivery;
-    public Vehicle correspondingVehicle;
+    public int correspondingVehicleId;
 
     public Request(int id,
                    int customerId,
@@ -50,7 +50,7 @@ public class Request {
                 request.numOfTools,
                 request.negativeRequest
         );
-        this.correspondingVehicle = request.correspondingVehicle;
+        this.correspondingVehicleId = request.correspondingVehicleId;
     }
 
     /**
@@ -80,7 +80,8 @@ public class Request {
         if (durationInDays != request.durationInDays) return false;
         if (toolId != request.toolId) return false;
         if (numOfTools != request.numOfTools) return false;
-        return pickedDayForDelivery == request.pickedDayForDelivery;
+        if (pickedDayForDelivery != request.pickedDayForDelivery) return false;
+        return correspondingVehicleId == request.correspondingVehicleId;
 
     }
 
@@ -95,6 +96,7 @@ public class Request {
         result = 31 * result + toolId;
         result = 31 * result + numOfTools;
         result = 31 * result + pickedDayForDelivery;
+        result = 31 * result + correspondingVehicleId;
         return result;
     }
 }

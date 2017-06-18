@@ -1,5 +1,7 @@
 package main.java;
 
+import main.java.genetic_algorithm.Chromosome;
+
 import java.util.*;
 
 /**
@@ -9,65 +11,63 @@ public class Vehicle {
     public int id;
     public Map<Integer, DayRoute> dayRouteMap;
     //in this list are all requests from all days
-    private List<Request> requestList;
+    private List<Integer> requestListIds;
     private Set<Integer> changedDays;
     public int totalVehicleDistance;
     public int totalExceededLoad;
-    private ProblemModel model;
+    private Chromosome chromosome;
 
 
-    public Vehicle(ProblemModel model, int id) {
+    public Vehicle(int id, Chromosome chromosome) {
         this.id = id;
-        this.requestList = new ArrayList<>();
+        this.requestListIds = new ArrayList<>();
         this.changedDays = new HashSet<>();
         this.dayRouteMap = new HashMap<>();
         this.totalVehicleDistance = 0;
         this.totalExceededLoad = 0;
-        this.model = model;
+        this.chromosome = chromosome;
     }
 
-    public Vehicle(Vehicle vehicle) {
-        this.dayRouteMap = new HashMap<>(vehicle.dayRouteMap);
-        this.requestList = new ArrayList<>(vehicle.requestList);
+    public Vehicle(Vehicle vehicle, Chromosome chromosome) {
+        this.dayRouteMap = new HashMap<>();
+        this.requestListIds = new ArrayList<>();
         this.changedDays = new HashSet<>();
         this.totalVehicleDistance = vehicle.totalVehicleDistance;
         this.totalVehicleDistance = 0;
         this.totalExceededLoad = 0;
-        this.model = vehicle.model;
         this.id = vehicle.id;
+        this.chromosome = chromosome;
+        for (Integer requestId : vehicle.requestListIds){
+            addRequest(requestId);
+        }
     }
 
 
-    public List<Request> getRequestList() {
-        return requestList;
-    }
-
-    public void addRequest(Request newRequest) {
+    public void addRequest(Integer newRequestId) {
+        Request newRequest = chromosome.requests[newRequestId];
         DayRoute dayRoute = dayRouteMap.get(newRequest.pickedDayForDelivery);
         if (dayRoute == null) {
-            dayRoute = new DayRoute(this.model);
+            dayRoute = new DayRoute(chromosome.model);
             dayRouteMap.put(newRequest.pickedDayForDelivery, dayRoute);
         }
         changedDays.add(newRequest.pickedDayForDelivery);
         dayRoute.add(newRequest);
-        requestList.add(newRequest);
+        requestListIds.add(newRequestId);
     }
 
-    public void removeRequest(Request request) {
+    public void removeRequest(Integer requestId) {
+        Request request = chromosome.requests[requestId];
         DayRoute dayRoute = dayRouteMap.get(request.pickedDayForDelivery);
         if (dayRoute == null){
             System.err.print("Null route has request?!");
         }
         changedDays.add(request.pickedDayForDelivery);
         dayRoute.remove(request);
-        if (dayRoute.requests.size() == 0) {
-            dayRouteMap.remove(request.pickedDayForDelivery);
-        }
-        requestList.remove(request);
+        requestListIds.remove(request);
     }
 
     public boolean usedVehicle() {
-        return requestList.size() != 0;
+        return requestListIds.size() != 0;
     }
 
     /**
@@ -82,17 +82,24 @@ public class Vehicle {
 
             this.totalVehicleDistance -= dayRoute.totalDayRouteDistance;
             for (Integer load : dayRoute.routeMaxLoad) {
-                if (load > model.capacity) {
-                    this.totalExceededLoad -= load - model.capacity;
+                if (load > chromosome.model.capacity) {
+                    this.totalExceededLoad -= load - chromosome.model.capacity;
                 }
             }
+
+            //if day route is empty then we first have to substract its distance and load
+            if(dayRoute.requests.size() == 0){
+                dayRouteMap.remove(day);
+                continue;
+            }
+
 
             optimizeDayRoute(dayRoute);
 
             this.totalVehicleDistance += dayRoute.totalDayRouteDistance;
             for (Integer load : dayRoute.routeMaxLoad) {
-                if (load > model.capacity) {
-                    this.totalExceededLoad += load - model.capacity;
+                if (load > chromosome.model.capacity) {
+                    this.totalExceededLoad += load - chromosome.model.capacity;
 
                 }
             }
@@ -121,11 +128,12 @@ public class Vehicle {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Vehicle)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Vehicle vehicle = (Vehicle) o;
 
         return id == vehicle.id;
+
     }
 
     @Override
