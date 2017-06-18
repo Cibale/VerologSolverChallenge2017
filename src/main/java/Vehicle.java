@@ -69,8 +69,8 @@ public class Vehicle {
         for (Integer day : changedDays) {
             DayRoute dayRoute = dayRouteMap.get(day);
             //first delete old dayRoute values
-            this.totalVehicleDistance -= dayRoute.oldRouteDistance;
-            for (Integer load : dayRoute.oldRouteMaxLoads){
+            this.totalVehicleDistance -= dayRoute.totalRouteDistance;
+            for (Integer load : dayRoute.routeMaxLoad){
                 if (load > ProblemModel.capacity){
                     this.totalExceededLoad -= load - ProblemModel.capacity;
                 }
@@ -84,8 +84,8 @@ public class Vehicle {
                 route.add(request);
             }
             dayRoute.update();
-            this.totalVehicleDistance += dayRoute.oldRouteDistance;
-            for (Integer load : dayRoute.oldRouteMaxLoads){
+            this.totalVehicleDistance += dayRoute.totalRouteDistance;
+            for (Integer load : dayRoute.routeMaxLoad){
                 if (load > ProblemModel.capacity){
                     this.totalExceededLoad += load - ProblemModel.capacity;
                 }

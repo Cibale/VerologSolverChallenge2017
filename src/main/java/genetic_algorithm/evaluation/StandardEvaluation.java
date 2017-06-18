@@ -27,7 +27,7 @@ public class StandardEvaluation extends EvaluationFunction {
                     totalExceedeDistance += vehicle.totalVehicleDistance - model.maxTripDistance;
                 }
                 for (DayRoute dayRoute : vehicle.dayRouteMap.values()){
-                    for (Integer maxRouteLoad : dayRoute.oldRouteMaxLoads){
+                    for (Integer maxRouteLoad : dayRoute.routeMaxLoad){
                         if(maxRouteLoad > model.capacity){
                             totalExceededLoad += maxRouteLoad - model.capacity;
                         }

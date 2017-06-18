@@ -10,16 +10,16 @@ import java.util.List;
 public class DayRoute {
     public List<Request> requests;
     public List<List<Request>> routes;
-    public int oldRouteDistance;
+    public int totalRouteDistance;
     /**
      * stores max loads for each route
      */
-    public List<Integer> oldRouteMaxLoads;
+    public List<Integer> routeMaxLoad;
 
     public DayRoute(){
         this.requests = new ArrayList<>();
         this.routes = new ArrayList<>();
-        this.oldRouteDistance = 0;
+        this.totalRouteDistance = 0;
     }
 
     public void add(Request request){
@@ -31,12 +31,12 @@ public class DayRoute {
     }
 
     public void update(){
-        this.oldRouteDistance = 0;
+        this.totalRouteDistance = 0;
         for(int i = 0; i < requests.size() - 1; i++){
-            this.oldRouteDistance += ProblemModel.distanceMatrix[requests.get(i).customerId][requests.get(i+1).customerId];
+            this.totalRouteDistance += ProblemModel.distanceMatrix[requests.get(i).customerId][requests.get(i+1).customerId];
         }
 
-        this.oldRouteMaxLoads = new LinkedList<>();
+        this.routeMaxLoad = new LinkedList<>();
         //for each route calculate maximal load
         for (List<Request> route : this.routes){
             int loadAtDepot = 0;
@@ -57,7 +57,7 @@ public class DayRoute {
                     maxLoad = currentLoad;
                 }
             }
-            this.oldRouteMaxLoads.add(maxLoad);
+            this.routeMaxLoad.add(maxLoad);
         }
     }
 }
