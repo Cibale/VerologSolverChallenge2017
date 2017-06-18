@@ -163,7 +163,7 @@ public class Solution {
                 route.visitedPlaces.add(0);
             }
             day.vehicleIdRoute.put(vehicle.id, route);
-            day.vehicleIdCost.put(vehicle.id, dayRoute.totalRouteDistance);
+            day.vehicleIdCost.put(vehicle.id, dayRoute.totalDayRouteDistance);
         }
     }
 }

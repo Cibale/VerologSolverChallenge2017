@@ -20,7 +20,7 @@ public class Engine {
 
     public void decideDays() {
         // random method just to start with
-        for (int i = 0; i < model.requests.length; i++) {
+        for (int i = 1; i < model.requests.length; i++) {
             Request request = model.requests[i];
             request.pickedDayForDelivery = request.firstDayForDelivery +
                     (rand.nextInt(request.lastDayForDelivery + 1) - request.firstDayForDelivery);
@@ -35,7 +35,7 @@ public class Engine {
      */
     private void createNegativeRequests() {
         model.negativeRequests = new Request[model.requests.length];
-        for (int i = 0; i < model.negativeRequests.length; i++) {
+        for (int i = 1; i < model.negativeRequests.length; i++) {
             model.negativeRequests[i] = model.requests[i].getNegativeRequest();
         }
     }

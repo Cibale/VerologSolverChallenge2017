@@ -33,6 +33,7 @@ public class GA {
 
 
     public GA(ProblemModel model) {
+        this.model = model;
         population = new Chromosome[POPULATION_SIZE];
         evaluationFunction = new StandardEvaluation(model);
         crossover = new StandardCrossover();

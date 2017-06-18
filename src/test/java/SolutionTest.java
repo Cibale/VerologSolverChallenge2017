@@ -18,9 +18,8 @@ public class SolutionTest {
     public void toStringTest() {
         Solution solution = new Solution(new ProblemModel());
         solution.days = new ArrayList<>();
-        Day day = new Day();
+        Day day = new Day(10);
         solution.days.add(day);
-        day.id = 10;
         day.numOfVehicles = 10;
         day.startDepot = new int[]{2, 1, 1, 3};
         day.finishDepot = new int[]{2, 1, 1, 3};

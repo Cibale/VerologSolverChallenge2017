@@ -11,14 +11,20 @@ public class StandardMutation extends Mutation {
 
     @Override
     public void mutateChild(Chromosome child, double MUTATION_PROBABILITY) {
-          for (int i = 0; i < child.requests.length; i++){
-              if (Math.random() < MUTATION_PROBABILITY){
-                  int randIndex = ThreadLocalRandom.current().nextInt(child.vehicles.length);
-                  child.vehicles[randIndex].removeRequest(child.requests[i]);
-                  child.requests[i].correspondingVehicle = child.vehicles[randIndex];
-                  child.vehicles[randIndex].addRequest(child.requests[i]);
-              }
-          }
+        for (int i = 0; i < child.requests.length; i++) {
+            if (Math.random() < MUTATION_PROBABILITY) {
+                int randIndex = ThreadLocalRandom.current().nextInt(child.vehicles.length);
+                int vehicleId = child.requests[i].correspondingVehicle.id;
+                try {
+                    child.vehicles[vehicleId].removeRequest(child.requests[i]);
+
+                } catch (NullPointerException e) {
+                    System.err.println("NULL PTR Error");
+                }
+                child.requests[i].correspondingVehicle = child.vehicles[randIndex];
+                child.vehicles[randIndex].addRequest(child.requests[i]);
+            }
+        }
 
     }
 }

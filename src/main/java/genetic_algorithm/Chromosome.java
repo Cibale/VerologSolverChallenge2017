@@ -40,7 +40,7 @@ public class Chromosome {
     }
 
     public Chromosome(ProblemModel model) {
-        this(model, null, null);
+        this.model = model;
     }
 
     /**
@@ -48,13 +48,14 @@ public class Chromosome {
      */
     public void initialize() {
         // in worst case - one vehicle per request
-        vehicles = new Vehicle[model.requests.length + model.negativeRequests.length];
-        requests = new Request[model.requests.length + model.negativeRequests.length];
+        // because of empty first request id (no request with id 0)
+        vehicles = new Vehicle[model.requests.length + model.negativeRequests.length - 2];
+        requests = new Request[model.requests.length + model.negativeRequests.length - 2];
         int index = 0;
-        for (int i = 0; i < model.requests.length; i++) {
+        for (int i = 1; i < model.requests.length; i++) {
             requests[index++] = new Request(model.requests[i]);
         }
-        for (int i = 0; i < model.negativeRequests.length; i++) {
+        for (int i = 1; i < model.negativeRequests.length; i++) {
             requests[index++] = new Request(model.negativeRequests[i]);
         }
         for (int i = 0; i < vehicles.length; i++) {

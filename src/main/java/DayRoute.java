@@ -32,6 +32,7 @@ public class DayRoute {
     public DayRoute(ProblemModel model){
         this.requests = new ArrayList<>();
         this.routes = new ArrayList<>();
+        this.routeMaxLoad = new ArrayList<>();
         this.totalDayRouteDistance = 0;
         this.model = model;
     }

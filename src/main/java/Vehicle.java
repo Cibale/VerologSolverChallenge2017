@@ -69,7 +69,8 @@ public class Vehicle {
     }
 
     /**
-     * Updates only dayRoute that have changes in their requests. Updates totalVehicleDistance and totalExceededLoad.
+     * Updates only dayRoute that have changes in their requests.
+     * Updates totalVehicleDistance and totalExceededLoad.
      */
     public void updateDayRoutes() {
         // optimize only changed days
