@@ -50,6 +50,7 @@ public class Request {
                 request.numOfTools,
                 request.negativeRequest
         );
+        this.pickedDayForDelivery = request.pickedDayForDelivery;
         this.correspondingVehicleId = request.correspondingVehicleId;
     }
 
