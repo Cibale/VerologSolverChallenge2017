@@ -15,11 +15,9 @@ public class Vehicle {
     public int totalExceededLoad;
     private ProblemModel model;
 
-    public Vehicle(int id) {
-        this.id = id;
-    }
 
     public Vehicle(ProblemModel model, int id) {
+        this.id = id;
         this.requestList = new ArrayList<>();
         this.changedDays = new HashSet<>();
         this.dayRouteMap = new HashMap<>();
@@ -36,6 +34,7 @@ public class Vehicle {
         this.totalVehicleDistance = 0;
         this.totalExceededLoad = 0;
         this.model = vehicle.model;
+        this.id = vehicle.id;
     }
 
 
@@ -56,6 +55,9 @@ public class Vehicle {
 
     public void removeRequest(Request request) {
         DayRoute dayRoute = dayRouteMap.get(request.pickedDayForDelivery);
+        if (dayRoute == null){
+            System.err.print("Null route has request?!");
+        }
         changedDays.add(request.pickedDayForDelivery);
         dayRoute.remove(request);
         if (dayRoute.requests.size() == 0) {
