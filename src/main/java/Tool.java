@@ -8,6 +8,7 @@ public class Tool {
     public int size;
     public int count;
     public int cost;
+    public int numberNeeded;
 
     public Tool(int id, int size, int count, int cost) {
         this.id = id;

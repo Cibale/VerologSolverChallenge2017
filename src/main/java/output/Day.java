@@ -16,6 +16,10 @@ public class Day {
     public Map<Integer, List<Visit>> vehicleIdVisits;
     public Map<Integer, Integer> vehicleIdCost;
 
+    public Day(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         StringBuilder buff = new StringBuilder();

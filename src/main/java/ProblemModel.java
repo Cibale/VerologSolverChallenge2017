@@ -19,7 +19,7 @@ public class ProblemModel {
     public int distanceCost;
 
     // id is index of array
-    public static Tool[] tools;
+    public Tool[] tools;
     public Point[] coordinates;
     public Request[] requests;
     // requests for picking up tools

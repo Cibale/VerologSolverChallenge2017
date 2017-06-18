@@ -6,7 +6,7 @@ import java.util.*;
  * Created by mmatak on 6/16/17.
  */
 public class Vehicle {
-
+    public int id;
     public Map<Integer, DayRoute> dayRouteMap;
     //in this list are all requests from all days
     private List<Request> requestList;
@@ -14,7 +14,8 @@ public class Vehicle {
     public int totalVehicleDistance;
     public int totalExceededLoad;
 
-    public Vehicle() {
+    public Vehicle(int id) {
+        this.id = id;
         this.requestList = new ArrayList<>();
         this.changedDays = new HashSet<>();
         this.dayRouteMap = new HashMap<>();
@@ -30,6 +31,7 @@ public class Vehicle {
         this.totalVehicleDistance = 0;
         this.totalExceededLoad = 0;
     }
+
 
     public List<Request> getRequestList() {
         return requestList;
@@ -70,8 +72,8 @@ public class Vehicle {
             DayRoute dayRoute = dayRouteMap.get(day);
             //first delete old dayRoute values
             this.totalVehicleDistance -= dayRoute.totalRouteDistance;
-            for (Integer load : dayRoute.routeMaxLoad){
-                if (load > ProblemModel.capacity){
+            for (Integer load : dayRoute.routeMaxLoad) {
+                if (load > ProblemModel.capacity) {
                     this.totalExceededLoad -= load - ProblemModel.capacity;
                 }
             }
@@ -80,13 +82,13 @@ public class Vehicle {
             //TODO: Optimize dayRoute, currently only one route
             List<Request> route = new ArrayList<>();
             dayRoute.routes.add(route);
-            for (Request request : dayRoute.requests){
+            for (Request request : dayRoute.requests) {
                 route.add(request);
             }
             dayRoute.update();
             this.totalVehicleDistance += dayRoute.totalRouteDistance;
-            for (Integer load : dayRoute.routeMaxLoad){
-                if (load > ProblemModel.capacity){
+            for (Integer load : dayRoute.routeMaxLoad) {
+                if (load > ProblemModel.capacity) {
                     this.totalExceededLoad += load - ProblemModel.capacity;
                 }
             }
@@ -95,5 +97,18 @@ public class Vehicle {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Vehicle)) return false;
 
+        Vehicle vehicle = (Vehicle) o;
+
+        return id == vehicle.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }
