@@ -29,12 +29,12 @@ public class Chromosome {
     public Chromosome(ProblemModel model, Vehicle[] vehicles, Request[] requests) {
         this.model = model;
         this.vehicles = new Vehicle[vehicles.length];
-        for (int i = 0; i < vehicles.length; i++){
+        for (int i = 0; i < vehicles.length; i++) {
             this.vehicles[i] = new Vehicle(vehicles[i]);
         }
 
         this.requests = new Request[requests.length];
-        for (int i = 0; i < vehicles.length; i++){
+        for (int i = 0; i < vehicles.length; i++) {
             this.requests[i] = new Request(requests[i]);
         }
     }
@@ -58,15 +58,15 @@ public class Chromosome {
             requests[index++] = new Request(model.negativeRequests[i]);
         }
         for (int i = 0; i < vehicles.length; i++) {
-            vehicles[i] = new Vehicle(i);
+            vehicles[i] = new Vehicle(this.model, i);
         }
-        for (int i = 0; i < requests.length; i++){
+        for (int i = 0; i < requests.length; i++) {
             int vehicleIndex = ThreadLocalRandom.current().nextInt(vehicles.length);
             requests[i].correspondingVehicle = vehicles[vehicleIndex];
             vehicles[vehicleIndex].addRequest(requests[i]);
         }
         for (int i = 0; i < vehicles.length; i++) {
-            vehicles[i].optimizeDayRoute();
+            vehicles[i].updateDayRoutes();
         }
 
     }

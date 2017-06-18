@@ -10,7 +10,7 @@ public class ProblemModel {
     public String name;
 
     public int days;
-    public static int capacity;
+    public int capacity;
     public int maxTripDistance;
     public int depotCoordinateId;
 
@@ -25,5 +25,5 @@ public class ProblemModel {
     // requests for picking up tools
     public Request[] negativeRequests;
 
-    public static int[][] distanceMatrix;
+    public int[][] distanceMatrix;
 }
