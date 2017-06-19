@@ -27,10 +27,10 @@ public class SolutionTest {
         day.usedVehiclesSorted.add(5);
         day.vehicleIdRoute = new HashMap<>();
         Route route = new Route();
-        route.visitedPlaces = new ArrayList<>();
-        route.visitedPlaces.add(0);
-        route.visitedPlaces.add(1);
-        route.visitedPlaces.add(0);
+        route.doneRequests = new ArrayList<>();
+        route.doneRequests.add(0);
+        route.doneRequests.add(1);
+        route.doneRequests.add(0);
         day.vehicleIdRoute.put(5, route);
         day.vehicleIdVisits = new HashMap<>();
         List<Visit> visitList = new ArrayList<>();

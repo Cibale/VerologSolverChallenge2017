@@ -25,26 +25,27 @@ public class Day {
     public String toString() {
         StringBuilder buff = new StringBuilder();
         buff.append("DAY = ").append(id).append("\n");
-        buff.append("NUMBER_OF_VEHICLES = ").append(numOfVehicles).append("\n");
+//        buff.append("NUMBER_OF_VEHICLES = ").append(numOfVehicles).append("\n");
 
-        buff.append("START_DEPOT = ");
-        for (int i = 0; i < startDepot.length; i++) {
-            buff.append(startDepot[i]).append(" ");
-        }
-        buff.deleteCharAt(buff.length() - 1).append("\n");
+//        buff.append("START_DEPOT = ");
+//        for (int i = 0; i < startDepot.length; i++) {
+//            buff.append(startDepot[i]).append(" ");
+//        }
+//        buff.deleteCharAt(buff.length() - 1).append("\n");
+//
+//        buff.append("FINISH_DEPOT = ");
+//        for (int i = 0; i < finishDepot.length; i++) {
+//            buff.append(finishDepot[i]).append(" ");
+//        }
+//        buff.deleteCharAt(buff.length() - 1).append("\n");
 
-        buff.append("FINISH_DEPOT = ");
-        for (int i = 0; i < finishDepot.length; i++) {
-            buff.append(finishDepot[i]).append(" ");
-        }
-        buff.deleteCharAt(buff.length() - 1).append("\n");
-
+        int vehicleCounter = 1;
         for (Integer vehicleId : usedVehiclesSorted) {
             // routes
             Route route = vehicleIdRoute.get(vehicleId);
-            buff.append(vehicleId).append("\t").append("R").append("\t");
-            for (Integer placeId : route.visitedPlaces) {
-                buff.append(placeId).append("\t");
+            buff.append(vehicleCounter++).append("\t").append("R").append("\t");
+            for (Integer requestId : route.doneRequests) {
+                buff.append(requestId).append("\t");
             }
             buff.deleteCharAt(buff.length() - 1).append("\n");
 
@@ -58,8 +59,8 @@ public class Day {
 //            }
 
             //total cost of that vehicle
-            buff.append(vehicleId).append("\t").append("D").append("\t");
-            buff.append(vehicleIdCost.get(vehicleId)).append("\n");
+//            buff.append(vehicleId).append("\t").append("D").append("\t");
+            // buff.append(vehicleIdCost.get(vehicleId)).append("\n");
         }
         return buff.toString();
     }

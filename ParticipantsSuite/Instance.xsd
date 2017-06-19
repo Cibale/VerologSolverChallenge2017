@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2016 (x64) (http://www.altova.com) by Helpdesk (Ortec) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="instance">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="info">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="dataset" type="xs:string"/>
+							<xs:element name="name" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="network">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="nodes">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="node" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="cx" type="xs:integer"/>
+													<xs:element name="cy" type="xs:integer"/>
+												</xs:sequence>
+												<xs:attribute name="id" type="xs:integer" use="required"/>
+												<xs:attribute name="type" type="xs:integer" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="euclidean"/>
+							<xs:element name="floor"/>
+							<xs:element name="links" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="link" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="length" type="xs:int"/>
+												</xs:sequence>
+												<xs:attribute name="head" type="xs:integer"/>
+												<xs:attribute name="tail" type="xs:integer"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="symmetric" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="fleet">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="vehicle_profile">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="departure_node" type="xs:integer"/>
+										<xs:element name="arrival_node" type="xs:integer"/>
+										<xs:element name="capacity" type="xs:integer"/>
+										<xs:element name="max_travel_distance" type="xs:integer"/>
+										<xs:element name="fix_cost" type="xs:integer"/>
+										<xs:element name="cost_x_time" type="xs:integer"/>
+										<xs:element name="cost_x_distance" type="xs:integer"/>
+									</xs:sequence>
+									<xs:attribute name="type" type="xs:integer"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="requests">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="request">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="quantity" type="xs:integer"/>
+										<xs:element name="resource">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:integer">
+														<xs:attribute name="id" type="xs:integer" use="required"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="custom">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="first_deliver_day" type="xs:integer"/>
+													<xs:element name="last_deliver_day" type="xs:integer"/>
+													<xs:element name="days_needed" type="xs:integer"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="id" type="xs:integer" use="required"/>
+									<xs:attribute name="node" type="xs:integer" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="resources">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="resource" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:integer">
+											<xs:attribute name="id" type="xs:integer" use="required"/>
+											<xs:attribute name="size" type="xs:integer" use="required"/>
+											<xs:attribute name="cost" type="xs:integer" use="required"/>
+											<xs:attribute name="renewable" type="xs:string"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="number_of_days" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

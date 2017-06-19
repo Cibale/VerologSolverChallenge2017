@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instance number_of_days="50">
+	<info>
+		<dataset>VeRoLog solver challenge 2017</dataset>
+		<name>testInstance</name>
+	</info>
+	<network>
+		<nodes>
+			<node id="0" type="0">
+				<cx>10</cx>
+				<cy>50</cy>
+			</node>
+			<node id="1" type="1">
+				<cx>20</cx>
+				<cy>10</cy>
+			</node>
+			<node id="2" type="1">
+				<cx>50</cx>
+				<cy>5</cy>
+			</node>
+			<node id="3" type="1">
+				<cx>33</cx>
+				<cy>7</cy>
+			</node>
+			<node id="4" type="1">
+				<cx>40</cx>
+				<cy>40</cy>
+			</node>
+			<node id="5" type="1">
+				<cx>70</cx>
+				<cy>40</cy>
+			</node>
+			<node id="6" type="1">
+				<cx>1</cx>
+				<cy>35</cy>
+			</node>
+		</nodes>
+		<euclidean />
+		<floor />
+		<links symmetric="true">
+			<link head="0" tail="1">
+				<length>41</length>
+			</link>
+			<link head="0" tail="2">
+				<length>60</length>
+			</link>
+			<link head="0" tail="3">
+				<length>48</length>
+			</link>
+			<link head="0" tail="4">
+				<length>31</length>
+			</link>
+			<link head="0" tail="5">
+				<length>60</length>
+			</link>
+			<link head="0" tail="6">
+				<length>17</length>
+			</link>
+			<link head="1" tail="2">
+				<length>30</length>
+			</link>
+			<link head="1" tail="3">
+				<length>13</length>
+			</link>
+			<link head="1" tail="4">
+				<length>36</length>
+			</link>
+			<link head="1" tail="5">
+				<length>58</length>
+			</link>
+			<link head="1" tail="6">
+				<length>31</length>
+			</link>
+			<link head="2" tail="3">
+				<length>17</length>
+			</link>
+			<link head="2" tail="4">
+				<length>36</length>
+			</link>
+			<link head="2" tail="5">
+				<length>40</length>
+			</link>
+			<link head="2" tail="6">
+				<length>57</length>
+			</link>
+			<link head="3" tail="4">
+				<length>33</length>
+			</link>
+			<link head="3" tail="5">
+				<length>49</length>
+			</link>
+			<link head="3" tail="6">
+				<length>42</length>
+			</link>
+			<link head="4" tail="5">
+				<length>30</length>
+			</link>
+			<link head="4" tail="6">
+				<length>39</length>
+			</link>
+			<link head="5" tail="6">
+				<length>69</length>
+			</link>
+		</links>
+	</network>
+	<fleet>
+		<vehicle_profile type="1">
+			<departure_node>0</departure_node>
+			<arrival_node>0</arrival_node>
+			<capacity>6</capacity>
+			<max_travel_distance>25000</max_travel_distance>
+			<fix_cost>1</fix_cost>
+			<cost_x_time>10000000</cost_x_time>
+			<cost_x_distance>10000</cost_x_distance>
+		</vehicle_profile>
+	</fleet>
+	<requests>
+		<request id="1" node="1">
+			<quantity>1</quantity>
+			<resource id="1">1</resource>
+			<custom>
+				<first_deliver_day>1</first_deliver_day>
+				<last_deliver_day>10</last_deliver_day>
+				<days_needed>5</days_needed>
+			</custom>
+		</request>
+		<request id="2" node="2">
+			<quantity>1</quantity>
+			<resource id="3">1</resource>
+			<custom>
+				<first_deliver_day>5</first_deliver_day>
+				<last_deliver_day>25</last_deliver_day>
+				<days_needed>3</days_needed>
+			</custom>
+		</request>
+		<request id="3" node="3">
+			<quantity>2</quantity>
+			<resource id="4">2</resource>
+			<custom>
+				<first_deliver_day>20</first_deliver_day>
+				<last_deliver_day>30</last_deliver_day>
+				<days_needed>4</days_needed>
+			</custom>
+		</request>
+		<request id="4" node="4">
+			<quantity>3</quantity>
+			<resource id="1">3</resource>
+			<custom>
+				<first_deliver_day>25</first_deliver_day>
+				<last_deliver_day>45</last_deliver_day>
+				<days_needed>5</days_needed>
+			</custom>
+		</request>
+		<request id="5" node="5">
+			<quantity>1</quantity>
+			<resource id="2">1</resource>
+			<custom>
+				<first_deliver_day>40</first_deliver_day>
+				<last_deliver_day>45</last_deliver_day>
+				<days_needed>2</days_needed>
+			</custom>
+		</request>
+		<request id="6" node="6">
+			<quantity>1</quantity>
+			<resource id="4">1</resource>
+			<custom>
+				<first_deliver_day>15</first_deliver_day>
+				<last_deliver_day>30</last_deliver_day>
+				<days_needed>7</days_needed>
+			</custom>
+		</request>
+	</requests>
+	<resources>
+		<resource id="1" renewable="false" size="1" cost="100">20</resource>
+		<resource id="2" renewable="false" size="1" cost="100">20</resource>
+		<resource id="3" renewable="false" size="1" cost="100">20</resource>
+		<resource id="4" renewable="false" size="1" cost="100">20</resource>
+	</resources>
+</instance>

@@ -175,6 +175,6 @@ public class Parser {
     }
 
     public static void writeOutput(Path output, Solution bestSolution) throws IOException {
-        Files.write(output,bestSolution.toString().getBytes(), StandardOpenOption.CREATE);
+        Files.write(output, bestSolution.toString().getBytes());
     }
 }

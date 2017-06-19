@@ -11,6 +11,7 @@ public class Request {
     public int lastDayForDelivery;
     // how many days tools must stay at the customer
     public int durationInDays;
+    public int negativeId;
     public int toolId;
     public int numOfTools;
     public int pickedDayForDelivery;
@@ -50,6 +51,7 @@ public class Request {
                 request.numOfTools,
                 request.negativeRequest
         );
+        this.negativeId = request.negativeId;
         this.pickedDayForDelivery = request.pickedDayForDelivery;
         this.correspondingVehicleId = request.correspondingVehicleId;
     }
@@ -62,7 +64,8 @@ public class Request {
     public Request getNegativeRequest() {
         Request negativeRequest = new Request(this);
         negativeRequest.pickedDayForDelivery = this.pickedDayForDelivery + this.durationInDays;
-        this.negativeRequest = true;
+        negativeRequest.negativeRequest = true;
+        negativeRequest.negativeId = this.id;
         return negativeRequest;
     }
 

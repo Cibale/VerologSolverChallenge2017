@@ -36,16 +36,16 @@ public class Solution {
         buff.append("DATASET = ").append(dataset).append("\n");
         buff.append("NAME = ").append(name).append("\n");
         buff.append("\n");
-        buff.append("MAX_NUMBER_OF_VEHICLES = ").append(maxNumOfVehicles).append("\n");
-        buff.append("NUMBER_OF_VEHICLE_DAYS = ").append(numOfVehicleDays).append("\n");
-        buff.append("TOOL_USE =");
-        for (int i = 0; i < toolUse.length; i++) {
-            buff.append(" ").append(toolUse[i]);
-        }
-        buff.append("\n");
-        buff.append("DISTANCE = ").append(distance);
-        buff.append("COST = ").append(cost).append("\n");
-        buff.append("\n");
+//        buff.append("MAX_NUMBER_OF_VEHICLES = ").append(maxNumOfVehicles).append("\n");
+//        buff.append("NUMBER_OF_VEHICLE_DAYS = ").append(numOfVehicleDays).append("\n");
+//        buff.append("TOOL_USE =");
+//        for (int i = 0; i < toolUse.length; i++) {
+//            buff.append(" ").append(toolUse[i]);
+//        }
+//        buff.append("\n");
+//        buff.append("DISTANCE = ").append(distance).append("\n");
+//        buff.append("COST = ").append(cost).append("\n");
+//        buff.append("\n");
         for (Day day : days) {
             buff.append(day.toString());
             buff.append("\n");
@@ -96,6 +96,10 @@ public class Solution {
                 currentDayIndexStart = i;
                 currentDayIndexEnd = i;
             }
+            // process last day
+            if (i == chromosome.requests.length - 1) {
+                processDay(chromosome.requests, chromosome.vehicles, currentDayIndexStart, currentDayIndexEnd, currentDay);
+            }
         }
         //3.
         cost = chromosome.realCost;
@@ -139,7 +143,7 @@ public class Solution {
         day.numOfVehicles = vehiclesUsedThisDay.size();
         processVehiclesOnTheDay(day, vehiclesUsedThisDay);
         day.usedVehiclesSorted = new ArrayList<>();
-        for (Vehicle vehicle : vehiclesUsedThisDay){
+        for (Vehicle vehicle : vehiclesUsedThisDay) {
             day.usedVehiclesSorted.add(vehicle.id);
         }
         day.usedVehiclesSorted.sort(Integer::compare);
@@ -154,7 +158,7 @@ public class Solution {
             DayRoute dayRoute = vehicle.dayRouteMap.get(day.id);
             route.vehicleId = vehicle.id;
             //DEPOT ID
-            route.visitedPlaces.add(0);
+            route.doneRequests.add(0);
             int visitNumber = 1;
             for (List<Request> routes : dayRoute.routes) {
                 Visit visit = new Visit();
@@ -163,11 +167,15 @@ public class Solution {
                 visit.visitNumber = visitNumber;
                 // TODO: write which tools he has taken / returned to depot
                 for (Request req : routes) {
-                    route.visitedPlaces.add(req.customerId);
+                    if (req.negativeRequest) {
+                        route.doneRequests.add((req.negativeId + 1) * -1);
+                    } else {
+                        route.doneRequests.add((req.id + 1));
+                    }
                     this.toolUse[req.toolId] += req.numOfTools;
                 }
                 visitNumber++;
-                route.visitedPlaces.add(0);
+                route.doneRequests.add(0);
             }
             day.vehicleIdRoute.put(vehicle.id, route);
             day.vehicleIdCost.put(vehicle.id, dayRoute.totalDayRouteDistance);

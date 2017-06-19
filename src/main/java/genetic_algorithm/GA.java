@@ -19,10 +19,10 @@ import java.util.Comparator;
 public class GA {
     public Chromosome bestSolution;
     // must be even because of start method
-    public static int POPULATION_SIZE = 50;
-    public static int NUMBER_OF_GENERATIONS = 200;
-    public static double CROSSOVER_PROBABILITY = 0.75;
-    public static double MUTATION_PROBABILITY = 0.1;
+    public static int POPULATION_SIZE = 100;
+    public static int NUMBER_OF_GENERATIONS = 1500;
+    public static double CROSSOVER_PROBABILITY = 0.8;
+    public static double MUTATION_PROBABILITY = 0.25;
     public static int K_TOURNAMENT_SELECTION = 3;
     public Chromosome[] population;
     private EvaluationFunction evaluationFunction;
@@ -47,7 +47,7 @@ public class GA {
         sortPopulation(population);
         Chromosome[] newPopulation = new Chromosome[population.length];
 
-        for (int i = 0; i < NUMBER_OF_GENERATIONS; i++) {
+        for (int i = 0; i <= NUMBER_OF_GENERATIONS; i++) {
             // best solutions are on the lower indexes
             newPopulation[0] = population[0];
             newPopulation[1] = population[1];
@@ -61,13 +61,16 @@ public class GA {
                 newPopulation[currentAvailableIndex++] = children[0];
                 newPopulation[currentAvailableIndex++] = children[1];
             }
-            for (int j = 0; j < POPULATION_SIZE; j++){
-                population[j] = newPopulation[j];
+            for (int j = 0; j < POPULATION_SIZE; j++) {
+                population[j] = new Chromosome(newPopulation[j]);
             }
             evaluationFunction.evaluatePopulation(population);
             sortPopulation(population);
-            System.out.println("Generation: " + i + " , best solution: " + population[0].totalCost);
+            if (i % 10 == 0) {
+                System.out.println("Generation: " + i + " , best solution: " + population[0].totalCost);
+            }
         }
+        System.out.println("Generation: " + GA.NUMBER_OF_GENERATIONS + " , best solution: " + population[0].totalCost);
         this.bestSolution = population[0];
     }
 
@@ -77,7 +80,7 @@ public class GA {
      * @param population Array to be instanced with chromosomes.
      */
     private void initializePopulation(Chromosome[] population) {
-        for(int i = 0; i < population.length; i++){
+        for (int i = 0; i < population.length; i++) {
             population[i] = new Chromosome(model);
             population[i].initialize();
         }

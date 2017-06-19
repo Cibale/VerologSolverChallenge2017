@@ -118,9 +118,9 @@ public class Vehicle {
      */
     private void optimizeDayRoute(DayRoute dayRoute) {
         dayRoute.routes.clear();
-        List<Request> route = new ArrayList<>();
-        dayRoute.routes.add(route);
         for (Request request : dayRoute.requests) {
+            List<Request> route = new ArrayList<>();
+            dayRoute.routes.add(route);
             route.add(request);
         }
         dayRoute.update();

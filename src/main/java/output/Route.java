@@ -9,5 +9,5 @@ import java.util.List;
 public class Route {
     public int vehicleId;
     //each route must start and end with depotId, i.e. 0
-    public List<Integer> visitedPlaces = new LinkedList<>();
+    public List<Integer> doneRequests = new LinkedList<>();
 }
