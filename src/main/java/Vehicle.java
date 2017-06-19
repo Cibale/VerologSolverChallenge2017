@@ -41,6 +41,8 @@ public class Vehicle {
             addRequest(requestId);
             chromosome.requests[requestId].correspondingVehicleId = this.id;
         }
+        this.update();
+
     }
 
 
@@ -73,7 +75,7 @@ public class Vehicle {
      * Updates only dayRoute that have changes in their requests.
      * Updates totalVehicleDistance and totalExceededLoad.
      */
-    public void updateDayRoutes() {
+    public void update() {
         // optimize only changed days
         for (Integer day : changedDays) {
             DayRoute dayRoute = dayRouteMap.get(day);
@@ -104,6 +106,7 @@ public class Vehicle {
             }
 
         }
+        changedDays.clear();
 
     }
 

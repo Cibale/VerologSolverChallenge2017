@@ -1,7 +1,5 @@
 package main.java.genetic_algorithm.crossover;
 
-import main.java.Request;
-import main.java.Vehicle;
 import main.java.genetic_algorithm.Chromosome;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -33,8 +31,8 @@ public class StandardCrossover extends Crossover {
             child2.vehicles[child2.requests[i].correspondingVehicleId].addRequest(i);
         }
         for (int i = 0; i < parent1.vehicles.length; i++) {
-            child1.vehicles[i].updateDayRoutes();
-            child2.vehicles[i].updateDayRoutes();
+            child1.vehicles[i].update();
+            child2.vehicles[i].update();
         }
 
         return new Chromosome[]{child1, child2};

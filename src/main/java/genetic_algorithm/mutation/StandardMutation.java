@@ -1,6 +1,5 @@
 package main.java.genetic_algorithm.mutation;
 
-import main.java.Request;
 import main.java.genetic_algorithm.Chromosome;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -16,13 +15,16 @@ public class StandardMutation extends Mutation {
             if (Math.random() > MUTATION_PROBABILITY ) {
                 continue;
             }
-                child.vehicles[child.requests[i].correspondingVehicleId].removeRequest(i);
+            child.vehicles[child.requests[i].correspondingVehicleId].removeRequest(i);
 
 
-                int randIndex = ThreadLocalRandom.current().nextInt(child.vehicles.length);
-                child.vehicles[randIndex].addRequest(i);
+            int randIndex = ThreadLocalRandom.current().nextInt(child.vehicles.length);
             child.requests[i].correspondingVehicleId = child.vehicles[randIndex].id;
+            child.vehicles[randIndex].addRequest(i);
 
+        }
+        for (int i = 0; i < child.vehicles.length; i++) {
+            child.vehicles[i].update();
         }
 
     }

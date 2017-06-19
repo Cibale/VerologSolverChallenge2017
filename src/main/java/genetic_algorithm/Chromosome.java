@@ -73,7 +73,7 @@ public class Chromosome {
             requests[i].correspondingVehicleId = vehicleIndex;
         }
         for (int i = 0; i < vehicles.length; i++) {
-            vehicles[i].updateDayRoutes();
+            vehicles[i].update();
         }
 
     }
