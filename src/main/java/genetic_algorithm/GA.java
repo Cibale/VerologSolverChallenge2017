@@ -44,10 +44,11 @@ public class GA {
     public void start() {
         initializePopulation(population);
         evaluationFunction.evaluatePopulation(population);
+        sortPopulation(population);
+        Chromosome[] newPopulation = new Chromosome[population.length];
+
         for (int i = 0; i < NUMBER_OF_GENERATIONS; i++) {
             // best solutions are on the lower indexes
-            sortPopulation(population);
-            Chromosome[] newPopulation = new Chromosome[population.length];
             newPopulation[0] = population[0];
             newPopulation[1] = population[1];
             int currentAvailableIndex = 2;
@@ -60,12 +61,12 @@ public class GA {
                 newPopulation[currentAvailableIndex++] = children[0];
                 newPopulation[currentAvailableIndex++] = children[1];
             }
-            population = new  Chromosome[POPULATION_SIZE];
             for (int j = 0; j < POPULATION_SIZE; j++){
-                population[j] = new Chromosome(newPopulation[j]);
+                population[j] = newPopulation[j];
             }
             evaluationFunction.evaluatePopulation(population);
-            System.out.println("Generation: " + i + " , best solution: " + population[0].realCost);
+            sortPopulation(population);
+            System.out.println("Generation: " + i + " , best solution: " + population[0].totalCost);
         }
         this.bestSolution = population[0];
     }

@@ -24,6 +24,7 @@ public class Chromosome {
     public Chromosome(Chromosome chromosomeToCopy) {
         this(chromosomeToCopy.model, chromosomeToCopy.vehicles, chromosomeToCopy.requests);
         this.totalCost = chromosomeToCopy.totalCost;
+        this.realCost = chromosomeToCopy.realCost;
     }
 
     public Chromosome(ProblemModel model, Vehicle[] vehicles, Request[] requests) {
@@ -76,5 +77,10 @@ public class Chromosome {
             vehicles[i].update();
         }
 
+    }
+
+    @Override
+    public String toString() {
+        return "Real cost:"+this.realCost+" Total cost:"+this.totalCost;
     }
 }

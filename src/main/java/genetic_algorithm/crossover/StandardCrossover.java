@@ -13,7 +13,7 @@ public class StandardCrossover extends Crossover {
     @Override
     public Chromosome[] crossParents(Chromosome parent1, Chromosome parent2, double CROSSOVER_PROBABILITY) {
         if (Math.random() > CROSSOVER_PROBABILITY) {
-            return new Chromosome[]{parent1, parent2};
+            return new Chromosome[]{new Chromosome(parent1), new Chromosome(parent2)};
         }
         int splitPoint = ThreadLocalRandom.current().nextInt(parent1.requests.length);
         Chromosome child1 = new Chromosome(parent1);
