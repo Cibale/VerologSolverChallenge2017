@@ -65,9 +65,9 @@ public class GA {
                 population[j] = new Chromosome(newPopulation[j]);
             }
             evaluationFunction.evaluatePopulation(population);
+            System.out.println("Generation: " + i + " , best solution: " + population[0].realCost);
         }
         this.bestSolution = population[0];
-        System.out.println(bestSolution.totalCost+" "+bestSolution.realCost);
     }
 
     /**

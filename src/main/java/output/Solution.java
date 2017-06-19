@@ -44,7 +44,8 @@ public class Solution {
         }
         buff.append("\n");
         buff.append("DISTANCE = ").append(distance);
-        buff.append("COST = ").append(cost);
+        buff.append("COST = ").append(cost).append("\n");
+        buff.append("\n");
         for (Day day : days) {
             buff.append(day.toString());
             buff.append("\n");
@@ -76,6 +77,7 @@ public class Solution {
         //1.
         Arrays.sort(chromosome.requests, Comparator.comparingInt(o -> o.pickedDayForDelivery));
         //2.
+        toolUse = new int[model.tools.length];
         int currentDay = -1;
         int currentDayIndexStart = -1;
         int currentDayIndexEnd = -1;
@@ -136,6 +138,11 @@ public class Solution {
         }
         day.numOfVehicles = vehiclesUsedThisDay.size();
         processVehiclesOnTheDay(day, vehiclesUsedThisDay);
+        day.usedVehiclesSorted = new ArrayList<>();
+        for (Vehicle vehicle : vehiclesUsedThisDay){
+            day.usedVehiclesSorted.add(vehicle.id);
+        }
+        day.usedVehiclesSorted.sort(Integer::compare);
         days.add(day);
     }
 
@@ -157,7 +164,7 @@ public class Solution {
                 // TODO: write which tools he has taken / returned to depot
                 for (Request req : routes) {
                     route.visitedPlaces.add(req.customerId);
-                    model.tools[req.toolId].numberNeeded += req.numOfTools;
+                    this.toolUse[req.toolId] += req.numOfTools;
                 }
                 visitNumber++;
                 route.visitedPlaces.add(0);

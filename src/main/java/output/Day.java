@@ -48,14 +48,14 @@ public class Day {
             }
             buff.deleteCharAt(buff.length() - 1).append("\n");
 
-            // visits to depot
-            for (Visit visit : vehicleIdVisits.get(vehicleId)) {
-                buff.append(vehicleId).append("\t").append("V").append("\t").append(visit.visitNumber).append("\t");
-                for (int i = 0; i < visit.tools.length; i++) {
-                    buff.append(visit.tools[i]).append("\t");
-                }
-                buff.deleteCharAt(buff.length() - 1).append("\n");
-            }
+//            // visits to depot
+//            for (Visit visit : vehicleIdVisits.get(vehicleId)) {
+//                buff.append(vehicleId).append("\t").append("V").append("\t").append(visit.visitNumber).append("\t");
+//                for (int i = 0; i < visit.tools.length; i++) {
+//                    buff.append(visit.tools[i]).append("\t");
+//                }
+//                buff.deleteCharAt(buff.length() - 1).append("\n");
+//            }
 
             //total cost of that vehicle
             buff.append(vehicleId).append("\t").append("D").append("\t");
