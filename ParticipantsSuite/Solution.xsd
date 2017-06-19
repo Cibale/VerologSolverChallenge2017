@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2016 (x64) (http://www.altova.com) by Helpdesk (Ortec) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="solution">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="info">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="dataset" type="xs:string"/>
+							<xs:element name="name" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="cost" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="max_number_of_vehicles" type="xs:integer" minOccurs="0"/>
+							<xs:element name="number_of_vehicle_days" type="xs:integer" minOccurs="0"/>
+							<xs:element name="distance" type="xs:integer" minOccurs="0"/>
+							<xs:element name="cost_value" type="xs:integer" minOccurs="0"/>
+							<xs:element name="tools" type="toolType" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="days">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="day" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="start_depot" type="toolType" minOccurs="0"/>
+										<xs:element name="finish_depot" type="toolType" minOccurs="0"/>
+										<xs:element name="vehicles" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence minOccurs="0" maxOccurs="unbounded">
+													<xs:element name="vehicle">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="distance" type="xs:integer" minOccurs="0"/>
+																<xs:element name="route">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="depot" type="toolType"/>
+																			<xs:sequence minOccurs="2" maxOccurs="unbounded">
+																				<xs:choice>
+																					<xs:element name="request"/>
+																					<xs:element name="depot" type="toolType"/>
+																				</xs:choice>
+																			</xs:sequence>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="id" type="xs:integer" use="required"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="number_of_vehicles" type="xs:integer"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="id" type="xs:integer" use="required"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="toolType">
+		<xs:sequence>
+			<xs:element name="tool" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:integer">
+							<xs:attribute name="id" type="xs:integer" use="required"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

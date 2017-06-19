@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solution>
+	<info>
+		<dataset>VeRoLog solver challenge 2017</dataset>
+		<name>testInstance</name>
+	</info>
+	<cost>
+		<max_number_of_vehicles>1</max_number_of_vehicles>
+		<number_of_vehicle_days>12</number_of_vehicle_days>
+		<distance>1028</distance>
+		<cost_value>10280120801</cost_value>
+		<tools>
+			<tool id="1">3</tool>
+			<tool id="2">1</tool>
+			<tool id="3">1</tool>
+			<tool id="4">3</tool>
+		</tools>
+	</cost>
+	<days>
+		<day id="1">
+			<start_depot>
+				<tool id="1">2</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">2</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>82</distance>
+					<route>
+						<depot>
+							<tool id="1">-1</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+						<request type="deliver">1</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="5">
+			<start_depot>
+				<tool id="1">2</tool>
+				<tool id="2">1</tool>
+				<tool id="3">0</tool>
+				<tool id="4">3</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">2</tool>
+				<tool id="2">1</tool>
+				<tool id="3">0</tool>
+				<tool id="4">3</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>120</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">-1</tool>
+							<tool id="4">0</tool>
+						</depot>
+						<request type="deliver">2</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="6">
+			<start_depot>
+				<tool id="1">2</tool>
+				<tool id="2">1</tool>
+				<tool id="3">0</tool>
+				<tool id="4">3</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">0</tool>
+				<tool id="4">3</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>82</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+						<request type="pickup">1</request>
+						<depot>
+							<tool id="1">1</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="8">
+			<start_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">0</tool>
+				<tool id="4">3</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>120</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+						<request type="pickup">2</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">1</tool>
+							<tool id="4">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="15">
+			<start_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">2</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">2</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>34</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">-1</tool>
+						</depot>
+						<request type="deliver">6</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="20">
+			<start_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">0</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">0</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>96</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">-2</tool>
+						</depot>
+						<request type="deliver">3</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="22">
+			<start_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">0</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">1</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>34</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+						<request type="pickup">6</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">1</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="24">
+			<start_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">1</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>96</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+						<request type="pickup">3</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">2</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="25">
+			<start_depot>
+				<tool id="1">0</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">0</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>62</distance>
+					<route>
+						<depot>
+							<tool id="1">-3</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+						<request type="deliver">4</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="30">
+			<start_depot>
+				<tool id="1">0</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>62</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+						<request type="pickup">4</request>
+						<depot>
+							<tool id="1">3</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="40">
+			<start_depot>
+				<tool id="1">3</tool>
+				<tool id="2">0</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">3</tool>
+				<tool id="2">0</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>120</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">-1</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+						<request type="deliver">5</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+		<day id="42">
+			<start_depot>
+				<tool id="1">3</tool>
+				<tool id="2">0</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</start_depot>
+			<finish_depot>
+				<tool id="1">3</tool>
+				<tool id="2">1</tool>
+				<tool id="3">1</tool>
+				<tool id="4">3</tool>
+			</finish_depot>
+			<vehicles number_of_vehicles="1">
+				<vehicle id="1">
+					<distance>120</distance>
+					<route>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">0</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+						<request type="pickup">5</request>
+						<depot>
+							<tool id="1">0</tool>
+							<tool id="2">1</tool>
+							<tool id="3">0</tool>
+							<tool id="4">0</tool>
+						</depot>
+					</route>
+				</vehicle>
+			</vehicles>
+		</day>
+	</days>
+</solution>
