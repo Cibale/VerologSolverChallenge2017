@@ -13,9 +13,9 @@ public class StandardMutation extends Mutation {
     @Override
     public void mutateChild(Chromosome child, double MUTATION_PROBABILITY) {
         for (int i = 0; i < child.requests.length; i++) {
-//            if (Math.random() > MUTATION_PROBABILITY ) {
-//                continue;
-//            }
+            if (Math.random() > MUTATION_PROBABILITY ) {
+                continue;
+            }
                 child.vehicles[child.requests[i].correspondingVehicleId].removeRequest(i);
 
 

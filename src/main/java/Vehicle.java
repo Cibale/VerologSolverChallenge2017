@@ -46,6 +46,7 @@ public class Vehicle {
 
     public void addRequest(Integer newRequestId) {
         Request newRequest = chromosome.requests[newRequestId];
+
         DayRoute dayRoute = dayRouteMap.get(newRequest.pickedDayForDelivery);
         if (dayRoute == null) {
             dayRoute = new DayRoute(chromosome.model);
