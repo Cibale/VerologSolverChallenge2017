@@ -2,8 +2,10 @@ package main.java;
 
 import main.java.genetic_algorithm.Chromosome;
 import main.java.genetic_algorithm.GA;
+import main.java.output.Day;
 import main.java.output.Solution;
 
+import java.security.Key;
 import java.util.*;
 
 /**
@@ -28,39 +30,48 @@ public class Engine {
         createNegativeRequests();
     }
 
-    public void decideDaysGreedy(){
-        Map<Integer,Map<Integer,Integer>> days = new HashMap<>();
-        model.negativeRequests = new Request[model.requests.length];
-        for(Request request : model.requests){
+    public void decideDaysGreedy() {
+        Map<Integer, Map<Integer, Integer>> days = new HashMap<>();
+        for (Request request : model.requests) {
             //for every request look in days how many tools of that ids is in use that day
             int minNumOfToolsDay = -1;
             int minDay = -1;
-            for (int i = request.firstDayForDelivery ; i <= request.lastDayForDelivery; i++){
+            // find minDay - day with minimum tools of that kind
+            for (int i = request.firstDayForDelivery; i <= request.lastDayForDelivery; i++) {
                 //map (toolId, numOfTool)
-                Map<Integer,Integer> day = days.get(i);
-                if(day == null){
+                Map<Integer, Integer> day = days.get(i);
+                if (day == null) {
                     day = new HashMap<>();
-                    days.put(i,day);
+                    days.put(i, day);
                 }
-                Integer numOfTools = day.getOrDefault(request.toolId,0);
-                if(minNumOfToolsDay == -1 || minNumOfToolsDay > numOfTools){
+                Integer numOfTools = day.getOrDefault(request.toolId, 0);
+                if (minNumOfToolsDay == -1 || minNumOfToolsDay > numOfTools) {
                     minNumOfToolsDay = numOfTools;
                     minDay = i;
                 }
-
             }
             request.pickedDayForDelivery = minDay;
-            for (int j=request.pickedDayForDelivery; j< request.pickedDayForDelivery + request.durationInDays; j++){
-                Map<Integer,Integer> day = days.get(minDay);
-                if(day == null){
+            for (int j = request.pickedDayForDelivery; j <= request.pickedDayForDelivery + request.durationInDays; j++) {
+                Map<Integer, Integer> day = days.get(j);
+                if (day == null) {
+                    System.out.println("Creating hashmap for day " + j);
                     day = new HashMap<>();
-                    days.put(request.pickedDayForDelivery,day);
+                    days.put(j, day);
                 }
-                Integer numOfTools = day.getOrDefault(request.toolId,0);
-                numOfTools+=request.numOfTools;
+                Integer numOfTools = day.getOrDefault(request.toolId, 0);
+                numOfTools += request.numOfTools;
                 day.put(request.toolId, numOfTools);
+                if (request.toolId == 1){
+                    System.out.println("Now tool 1 is used on these days [count of tools]");
+                    for (Integer dayTool1 : days.keySet()){
+                        System.out.println("day " + dayTool1 + ", num of tool1: " + days.getOrDefault(dayTool1, new HashMap<>()).getOrDefault(1, 0));
+                    }
+                }
+                System.out.println("Day " + j + ", now has " + numOfTools + " instances of tool kind " + request.toolId);
+                System.out.println();
             }
 
+            System.out.println("Finished with processing request " + request.id);
 
 //            model.negativeRequests[request.id] = request.getNegativeRequest();
 //            model.negativeRequests[request.id].id = request.id + model.requests.length;
