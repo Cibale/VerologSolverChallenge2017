@@ -66,6 +66,7 @@ public class Request {
         negativeRequest.pickedDayForDelivery = this.pickedDayForDelivery + this.durationInDays;
         negativeRequest.negativeRequest = true;
         negativeRequest.negativeId = this.id;
+        negativeRequest.numOfTools = this.numOfTools;// * -1;
         return negativeRequest;
     }
 
