@@ -19,10 +19,10 @@ import java.util.Comparator;
 public class GA {
     public Chromosome bestSolution;
     // must be even because of start method
-    public static int POPULATION_SIZE = 100;
-    public static int NUMBER_OF_GENERATIONS = 1500;
+    public static int POPULATION_SIZE = 50;
+    public static int NUMBER_OF_GENERATIONS = 200;
     public static double CROSSOVER_PROBABILITY = 0.8;
-    public static double MUTATION_PROBABILITY = 0.25;
+    public static double MUTATION_PROBABILITY = 0.2;
     public static int K_TOURNAMENT_SELECTION = 3;
     public Chromosome[] population;
     private EvaluationFunction evaluationFunction;
