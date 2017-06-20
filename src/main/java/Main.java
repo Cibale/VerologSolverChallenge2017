@@ -17,7 +17,7 @@ public class Main {
         try {
             Parser.parseInput(args[0], model);
             Engine engine = new Engine(model);
-            engine.decideDaysGreedy();
+            engine.decideDaysGA();
             engine.run();
             Parser.writeOutput(output, engine.bestSolution);
         } catch (IOException e) {

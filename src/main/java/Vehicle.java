@@ -15,20 +15,20 @@ public class Vehicle {
     private Set<Integer> changedDays;
     public int totalVehicleDistance;
     public int totalExceededLoad;
-    private Chromosome chromosome;
+    private Chromosome chromosomeInDay;
 
 
-    public Vehicle(int id, Chromosome chromosome) {
+    public Vehicle(int id, Chromosome chromosomeInDay) {
         this.id = id;
         this.requestListIds = new ArrayList<>();
         this.changedDays = new HashSet<>();
         this.dayRouteMap = new HashMap<>();
         this.totalVehicleDistance = 0;
         this.totalExceededLoad = 0;
-        this.chromosome = chromosome;
+        this.chromosomeInDay = chromosomeInDay;
     }
 
-    public Vehicle(Vehicle vehicle, Chromosome chromosome) {
+    public Vehicle(Vehicle vehicle, Chromosome chromosomeInDay) {
         this.dayRouteMap = new HashMap<>();
         this.requestListIds = new ArrayList<>();
         this.changedDays = new HashSet<>();
@@ -36,10 +36,10 @@ public class Vehicle {
         this.totalVehicleDistance = 0;
         this.totalExceededLoad = 0;
         this.id = vehicle.id;
-        this.chromosome = chromosome;
+        this.chromosomeInDay = chromosomeInDay;
         for (Integer requestId : vehicle.requestListIds){
             addRequest(requestId);
-            chromosome.requests[requestId].correspondingVehicleId = this.id;
+            chromosomeInDay.requests[requestId].correspondingVehicleId = this.id;
         }
         this.update();
 
@@ -47,11 +47,11 @@ public class Vehicle {
 
 
     public void addRequest(Integer newRequestId) {
-        Request newRequest = chromosome.requests[newRequestId];
+        Request newRequest = chromosomeInDay.requests[newRequestId];
 
         DayRoute dayRoute = dayRouteMap.get(newRequest.pickedDayForDelivery);
         if (dayRoute == null) {
-            dayRoute = new DayRoute(chromosome.model);
+            dayRoute = new DayRoute(chromosomeInDay.model);
             dayRouteMap.put(newRequest.pickedDayForDelivery, dayRoute);
         }
         changedDays.add(newRequest.pickedDayForDelivery);
@@ -60,7 +60,7 @@ public class Vehicle {
     }
 
     public void removeRequest(Integer requestId) {
-        Request request = chromosome.requests[requestId];
+        Request request = chromosomeInDay.requests[requestId];
         DayRoute dayRoute = dayRouteMap.get(request.pickedDayForDelivery);
         changedDays.add(request.pickedDayForDelivery);
         dayRoute.remove(request);
@@ -83,8 +83,8 @@ public class Vehicle {
 
             this.totalVehicleDistance -= dayRoute.totalDayRouteDistance;
             for (Integer load : dayRoute.routeMaxLoad) {
-                if (load > chromosome.model.capacity) {
-                    this.totalExceededLoad -= load - chromosome.model.capacity;
+                if (load > chromosomeInDay.model.capacity) {
+                    this.totalExceededLoad -= load - chromosomeInDay.model.capacity;
                 }
             }
 
@@ -99,8 +99,8 @@ public class Vehicle {
 
             this.totalVehicleDistance += dayRoute.totalDayRouteDistance;
             for (Integer load : dayRoute.routeMaxLoad) {
-                if (load > chromosome.model.capacity) {
-                    this.totalExceededLoad += load - chromosome.model.capacity;
+                if (load > chromosomeInDay.model.capacity) {
+                    this.totalExceededLoad += load - chromosomeInDay.model.capacity;
 
                 }
             }

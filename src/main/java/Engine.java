@@ -1,11 +1,9 @@
 package main.java;
 
-import main.java.genetic_algorithm.Chromosome;
 import main.java.genetic_algorithm.GA;
-import main.java.output.Day;
+import main.java.genetic_algorithm.GA_Days;
 import main.java.output.Solution;
 
-import java.security.Key;
 import java.util.*;
 
 /**
@@ -62,7 +60,7 @@ public class Engine {
                 numOfTools += request.numOfTools;
                 day.put(request.toolId, numOfTools);
                 if (request.toolId == 1){
-                    System.out.println("Now tool 1 is used on these days [count of tools]");
+                    System.out.println("Now tool 1 is used on these days [availableNum of tools]");
                     for (Integer dayTool1 : days.keySet()){
                         System.out.println("day " + dayTool1 + ", num of tool1: " + days.getOrDefault(dayTool1, new HashMap<>()).getOrDefault(1, 0));
                     }
@@ -101,6 +99,13 @@ public class Engine {
             model.negativeRequests[i] = model.requests[i].getNegativeRequest();
             model.negativeRequests[i].id = model.requests[i].id + model.requests.length;
         }
+    }
+
+    public void decideDaysGA(){
+        GA_Days ga = new GA_Days(model);
+        ga.start();
+        model.requests = ga.bestSolution.requests;
+        createNegativeRequests();
     }
 
     public void run() {

@@ -58,7 +58,7 @@ public abstract class EvaluationFunction {
      * @param chromosome
      * @return
      */
-//    private int calculateTC(Chromosome chromosome) {
+//    private int calculateTC(chromosome chromosome) {
 //        //cost for using tool
 //    }
 

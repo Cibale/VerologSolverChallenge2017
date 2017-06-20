@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Created by mmatak on 6/16/17.
  */
-public class Chromosome {
+public class Chromosome{
     public Vehicle[] vehicles;
     public Request[] requests;
     // less is better
@@ -17,14 +17,13 @@ public class Chromosome {
     //cost without punishments
     public int realCost;
     public ProblemModel model;
-
     /**
      * Hard copy chromosome.
      */
-    public Chromosome(Chromosome chromosomeToCopy) {
-        this(chromosomeToCopy.model, chromosomeToCopy.vehicles, chromosomeToCopy.requests);
-        this.totalCost = chromosomeToCopy.totalCost;
-        this.realCost = chromosomeToCopy.realCost;
+    public Chromosome(Chromosome chromosomeInDayToCopy) {
+        this(chromosomeInDayToCopy.model, chromosomeInDayToCopy.vehicles, chromosomeInDayToCopy.requests);
+        this.totalCost = chromosomeInDayToCopy.totalCost;
+        this.realCost = chromosomeInDayToCopy.realCost;
     }
 
     public Chromosome(ProblemModel model, Vehicle[] vehicles, Request[] requests) {

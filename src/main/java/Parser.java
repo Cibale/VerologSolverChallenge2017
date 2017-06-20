@@ -168,9 +168,9 @@ public class Parser {
             String[] chunks = line.split("\\t");
             int id = Integer.parseInt(chunks[0]);
             int size = Integer.parseInt(chunks[1]);
-            int count = Integer.parseInt(chunks[2]);
+            int avaliableNum = Integer.parseInt(chunks[2]);
             int cost = Integer.parseInt(chunks[3]);
-            model.tools[id] = new Tool(id, size, count, cost);
+            model.tools[id] = new Tool(id, size, avaliableNum, cost);
         }
     }
 
