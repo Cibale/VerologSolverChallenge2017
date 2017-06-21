@@ -11,7 +11,7 @@ public class Request implements Serializable{
     public int customerId;
     public int firstDayForDelivery;
     public int lastDayForDelivery;
-    // how many days tools must stay at the customer
+    // how many daysMap tools must stay at the customer
     public int durationInDays;
     public int negativeId;
     public int toolId;

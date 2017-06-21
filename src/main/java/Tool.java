@@ -6,14 +6,14 @@ package main.java;
 public class Tool {
     public int id;
     public int size;
-    public int count;
+    public int availableNum;
     public int cost;
     public int numberNeeded;
 
-    public Tool(int id, int size, int count, int cost) {
+    public Tool(int id, int size, int availableNum, int cost) {
         this.id = id;
         this.size = size;
-        this.count = count;
+        this.availableNum = availableNum;
         this.cost = cost;
     }
 
@@ -26,7 +26,7 @@ public class Tool {
 
         if (id != tool.id) return false;
         if (size != tool.size) return false;
-        if (count != tool.count) return false;
+        if (availableNum != tool.availableNum) return false;
         return cost == tool.cost;
 
     }
@@ -35,7 +35,7 @@ public class Tool {
     public int hashCode() {
         int result = id;
         result = 31 * result + size;
-        result = 31 * result + count;
+        result = 31 * result + availableNum;
         result = 31 * result + cost;
         return result;
     }

@@ -41,14 +41,14 @@ public abstract class EvaluationFunction {
      * @param chromosome representation of solution
      * @return total cost of solution
      */
-    public final Integer evaluate(Chromosome chromosome) {
-        int trvc = calculateTRVC(chromosome);
-        int tuvc = calculateTUVC(chromosome);
-        int tdtc = calculateTDTC(chromosome);
+    public final Long evaluate(Chromosome chromosome) {
+        long trvc = calculateTRVC(chromosome);
+        long tuvc = calculateTUVC(chromosome);
+        long tdtc = calculateTDTC(chromosome);
         //int tc = calculateTC(chromosome);
-        int cost = trvc + tuvc + tdtc;// + tc;
+        long cost = trvc + tuvc + tdtc;// + tc;
         chromosome.realCost = cost;
-        int punishment = calculatePunishment(chromosome);
+        long punishment = calculatePunishment(chromosome);
         chromosome.totalCost = cost + punishment;
         return cost + punishment;
     }
@@ -58,12 +58,12 @@ public abstract class EvaluationFunction {
      * @param chromosome
      * @return
      */
-//    private int calculateTC(Chromosome chromosome) {
+//    private int calculateTC(chromosome chromosome) {
 //        //cost for using tool
 //    }
 
-    private int calculateTDTC(Chromosome chromosome) {
-        int totalDist = 0;
+    private long calculateTDTC(Chromosome chromosome) {
+        long totalDist = 0;
         for (int i = 0; i < chromosome.vehicles.length; i++) {
             totalDist += chromosome.vehicles[i].totalVehicleDistance;
         }
@@ -71,17 +71,17 @@ public abstract class EvaluationFunction {
         return totalDist * model.distanceCost;
     }
 
-    private int calculateTUVC(Chromosome chromosome) {
-        //for each vehicle add number of used days
-        int totalUsedDays = 0;
+    private long calculateTUVC(Chromosome chromosome) {
+        //for each vehicle add number of used daysMap
+        long totalUsedDays = 0;
         for (int i = 0; i < chromosome.vehicles.length; i++) {
             totalUsedDays += chromosome.vehicles[i].dayRouteMap.size();
         }
         return totalUsedDays * model.vehicleDayCost;
     }
 
-    private int calculateTRVC(Chromosome chromosome) {
-        int numOfUsedVehicle = 0;
+    private long calculateTRVC(Chromosome chromosome) {
+        long numOfUsedVehicle = 0;
         for (int i = 0; i < chromosome.vehicles.length; i++) {
             if (chromosome.vehicles[i].usedVehicle()) {
                 numOfUsedVehicle++;
@@ -91,7 +91,7 @@ public abstract class EvaluationFunction {
     }
 
 
-    abstract int calculatePunishment(Chromosome chromosome);
+    abstract long calculatePunishment(Chromosome chromosome);
 
     public void evaluatePopulation(Chromosome[] population) {
         for (int i = 0; i < population.length; i++) {
