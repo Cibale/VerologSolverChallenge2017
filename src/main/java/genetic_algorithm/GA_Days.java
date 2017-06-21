@@ -1,18 +1,10 @@
 package main.java.genetic_algorithm;
 
 import main.java.ProblemModel;
-import main.java.genetic_algorithm.crossover.Crossover;
 import main.java.genetic_algorithm.crossover.DaysCrossover;
-import main.java.genetic_algorithm.crossover.StandardCrossover;
 import main.java.genetic_algorithm.evaluation.DaysEvaluation;
-import main.java.genetic_algorithm.evaluation.EvaluationFunction;
-import main.java.genetic_algorithm.evaluation.StandardEvaluation;
 import main.java.genetic_algorithm.mutation.DaysMutation;
-import main.java.genetic_algorithm.mutation.Mutation;
-import main.java.genetic_algorithm.mutation.StandardMutation;
 import main.java.genetic_algorithm.selection.DaysTournament;
-import main.java.genetic_algorithm.selection.Selection;
-import main.java.genetic_algorithm.selection.TournamentSelection;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -23,10 +15,10 @@ import java.util.Comparator;
 public class GA_Days {
     public DaysChromosome bestSolution;
     // must be even because of start method
-    public static int POPULATION_SIZE = 50;
-    public static int NUMBER_OF_GENERATIONS = 1000;
+    public static int POPULATION_SIZE = 200;
+    public static int NUMBER_OF_GENERATIONS = 500;
     public static double CROSSOVER_PROBABILITY = 0.85;
-    public static double MUTATION_PROBABILITY = 0.1;
+    public static double MUTATION_PROBABILITY = 0.20;
     public static int K_TOURNAMENT_SELECTION = 3;
     public DaysChromosome[] population;
     private DaysEvaluation evaluationFunction;
@@ -50,8 +42,9 @@ public class GA_Days {
         evaluationFunction.evaluatePopulation(population);
         sortPopulation(population);
         DaysChromosome[] newPopulation = new DaysChromosome[population.length];
-
-        for (int i = 0; i <= NUMBER_OF_GENERATIONS; i++) {
+        int currentGen = 0;
+        this.bestSolution = population[0];
+        do {
             // best solutions are on the lower indexes
             newPopulation[0] = population[0];
             newPopulation[1] = population[1];
@@ -60,6 +53,9 @@ public class GA_Days {
                 DaysChromosome parent1 = selection.selectParent(population);
                 DaysChromosome parent2 = selection.selectParent(population);
                 DaysChromosome[] children = crossover.crossParents(parent1, parent2, CROSSOVER_PROBABILITY);
+                evaluationFunction.evaluate(children[0]);
+                evaluationFunction.evaluate(children[1]);
+
                 mutation.mutateChild(children[0], MUTATION_PROBABILITY);
                 mutation.mutateChild(children[1], MUTATION_PROBABILITY);
                 newPopulation[currentAvailableIndex++] = children[0];
@@ -70,11 +66,16 @@ public class GA_Days {
             }
             evaluationFunction.evaluatePopulation(population);
             sortPopulation(population);
-            if (i % 10 == 0) {
-                System.out.println("Generation: " + i + " , best solution: " + population[0].totalCost+", "+population[0].realCost);
+            if (currentGen % 10 == 0) {
+                System.out.println("Generation: " + currentGen + " , best solution: " + population[0].totalCost + ", " + population[0].realCost);
             }
-        }
-        System.out.println("Generation: " + GA_Days.NUMBER_OF_GENERATIONS + " , best solution: " + population[0].totalCost);
+            currentGen++;
+            if (population[0].totalCost < this.bestSolution.totalCost) {
+                this.bestSolution = population[0];
+            }
+        } while (currentGen < NUMBER_OF_GENERATIONS);//|| this.bestSolution.realCost != this.bestSolution.totalCost);
+
+        System.out.println("Generation: " + GA_Days.NUMBER_OF_GENERATIONS + " , best solution: " + this.bestSolution.totalCost);
         this.bestSolution = population[0];
     }
 
@@ -97,6 +98,6 @@ public class GA_Days {
      * @param population Population to sort.
      */
     private void sortPopulation(DaysChromosome[] population) {
-        Arrays.sort(population, Comparator.comparingInt(o -> o.totalCost));
+        Arrays.sort(population, Comparator.comparingLong(o -> o.totalCost));
     }
 }

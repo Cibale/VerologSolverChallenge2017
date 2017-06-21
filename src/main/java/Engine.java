@@ -31,7 +31,7 @@ public class Engine {
     public void decideDaysGreedy() {
         Map<Integer, Map<Integer, Integer>> days = new HashMap<>();
         for (Request request : model.requests) {
-            //for every request look in days how many tools of that ids is in use that day
+            //for every request look in daysMap how many tools of that ids is in use that day
             int minNumOfToolsDay = -1;
             int minDay = -1;
             // find minDay - day with minimum tools of that kind
@@ -60,7 +60,7 @@ public class Engine {
                 numOfTools += request.numOfTools;
                 day.put(request.toolId, numOfTools);
                 if (request.toolId == 1){
-                    System.out.println("Now tool 1 is used on these days [availableNum of tools]");
+                    System.out.println("Now tool 1 is used on these daysMap [availableNum of tools]");
                     for (Integer dayTool1 : days.keySet()){
                         System.out.println("day " + dayTool1 + ", num of tool1: " + days.getOrDefault(dayTool1, new HashMap<>()).getOrDefault(1, 0));
                     }
@@ -74,10 +74,10 @@ public class Engine {
 //            model.negativeRequests[request.id] = request.getNegativeRequest();
 //            model.negativeRequests[request.id].id = request.id + model.requests.length;
 //            Integer deliveryDay = model.negativeRequests[request.id].pickedDayForDelivery;
-//            Map<Integer,Integer> day = days.get(deliveryDay);
+//            Map<Integer,Integer> day = daysMap.get(deliveryDay);
 //            if(day == null){
 //                day = new HashMap<>();
-//                days.put(deliveryDay,day);
+//                daysMap.put(deliveryDay,day);
 //            }
 //            Integer numOfTools = day.getOrDefault(request.toolId,0);
 //            numOfTools-=request.numOfTools;
@@ -101,18 +101,20 @@ public class Engine {
         }
     }
 
-    public void decideDaysGA(){
+    public long decideDaysGA(){
         GA_Days ga = new GA_Days(model);
         ga.start();
         model.requests = ga.bestSolution.requests;
         createNegativeRequests();
+        return ga.bestSolution.totalCost;
     }
 
-    public void run() {
+    public long run() {
         GA ga = new GA(model);
         ga.start();
         bestSolution = new Solution(model);
         bestSolution.constructFrom(ga.bestSolution);
+        return ga.bestSolution.totalCost;
     }
 
 }

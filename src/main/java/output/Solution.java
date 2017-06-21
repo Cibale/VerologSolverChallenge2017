@@ -20,7 +20,7 @@ public class Solution {
     // index is id of tool, value is how many of those tools are used
     public int[] toolUse;
     public int distance;
-    public int cost;
+    public long cost;
     public List<Day> days = new ArrayList<>();
     private ProblemModel model;
 
@@ -61,7 +61,7 @@ public class Solution {
      */
     public void constructFrom(Chromosome chromosome) {
         /*
-        1. sort requests per days (lower day - lower index)
+        1. sort requests per daysMap (lower day - lower index)
         2. for each day spent:
             2.1. check number of vehicles used that day (update this number as maxNumOfVehicles)
             2.2. create routes per vehicle (*you have this in vehicle class*)

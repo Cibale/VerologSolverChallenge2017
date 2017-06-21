@@ -10,7 +10,7 @@ import java.util.*;
 public class Vehicle {
     public int id;
     public Map<Integer, DayRoute> dayRouteMap;
-    //in this list are all requests from all days
+    //in this list are all requests from all daysMap
     private List<Integer> requestListIds;
     private Set<Integer> changedDays;
     public int totalVehicleDistance;
@@ -76,7 +76,7 @@ public class Vehicle {
      * Updates totalVehicleDistance and totalExceededLoad.
      */
     public void update() {
-        // optimize only changed days
+        // optimize only changed daysMap
         for (Integer day : changedDays) {
             DayRoute dayRoute = dayRouteMap.get(day);
             //first delete old dayRoute values

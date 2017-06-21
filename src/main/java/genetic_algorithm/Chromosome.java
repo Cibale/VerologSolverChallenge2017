@@ -13,9 +13,9 @@ public class Chromosome{
     public Vehicle[] vehicles;
     public Request[] requests;
     // less is better
-    public int totalCost;
+    public long totalCost;
     //cost without punishments
-    public int realCost;
+    public long realCost;
     public ProblemModel model;
     /**
      * Hard copy chromosome.

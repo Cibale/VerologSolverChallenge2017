@@ -12,26 +12,39 @@ import java.util.Map;
 public class DaysEvaluation {
     private ProblemModel model;
 
-    public DaysEvaluation(ProblemModel model){
+    public DaysEvaluation(ProblemModel model) {
         this.model = model;
     }
 
-    public Integer evaluate(DaysChromosome chromosome){
-        int cost = 0;
-        int punishment = 0;
-        for (Map<Integer, Integer> toolUsed : chromosome.days.values()){
-            for(Map.Entry<Integer,Integer> entry : toolUsed.entrySet()){
-                Tool tool = model.tools[entry.getKey()];
-                cost += tool.cost * entry.getValue();
+    public Long evaluate(DaysChromosome chromosome) {
+        long punishment = 0;
+        chromosome.sumExceeded = 0;
+        chromosome.exceededToolIdSet.clear();
+        int[] toolsUsed = new int[model.tools.length];
+        for (Map.Entry<Integer, Map<Integer, DaysChromosome.UsageToolRequests>> day_ToolUsedRequests : chromosome.daysMap.entrySet()) {
+            for (Map.Entry<Integer, DaysChromosome.UsageToolRequests> toolId_UsageToolClass : day_ToolUsedRequests.getValue().entrySet()) {
+                Tool tool = model.tools[toolId_UsageToolClass.getKey()];
+                if(toolsUsed[tool.id] < toolId_UsageToolClass.getValue().usage ){
+                    toolsUsed[tool.id] = toolId_UsageToolClass.getValue().usage;
+                }
                 //punishment
-                if (entry.getValue() > tool.availableNum){
-                    punishment += (entry.getValue() - tool.availableNum) * model.vehicleCost;
+                int exceeded = (toolId_UsageToolClass.getValue().usage - tool.availableNum);
+                if (exceeded > 0) {
+                    punishment += exceeded ;//* tool.cost;
+                    boolean bol = chromosome.exceededToolIdSet.add(chromosome.new ExceededToolId(exceeded, tool.id, day_ToolUsedRequests.getKey()));
+                     chromosome.exceededToolIdSet.add(chromosome.new ExceededToolId(exceeded, tool.id, day_ToolUsedRequests.getKey()));
+                    chromosome.sumExceeded+=exceeded;
                 }
             }
         }
+        long cost = 0;
+        for(int i = 1; i < toolsUsed.length; i++){
+            cost+=toolsUsed[i] * model.tools[i].cost;
+        }
         chromosome.realCost = cost;
         chromosome.totalCost = cost + punishment;
-        return  chromosome.totalCost;
+        chromosome.toolUsed = toolsUsed;
+        return chromosome.totalCost;
     }
 
     public void evaluatePopulation(DaysChromosome[] population) {
