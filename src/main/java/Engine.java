@@ -3,6 +3,7 @@ package main.java;
 import main.java.dfs.DFS;
 import main.java.genetic_algorithm.Chromosome;
 import main.java.genetic_algorithm.GA;
+import main.java.genetic_algorithm.GA_Days;
 import main.java.output.Day;
 import main.java.output.Solution;
 
@@ -67,7 +68,7 @@ public class Engine {
                 Map<Integer, Integer> day = days.computeIfAbsent(j, k -> new HashMap<>());
                 Integer numOfTools = day.getOrDefault(request.toolId, 0);
                 numOfTools += request.numOfTools;
-                if (numOfTools > model.tools[request.toolId].count) {
+                if (numOfTools > model.tools[request.toolId].availableNum) {
                     System.out.println("Too much of tool " + request.toolId + "(" + numOfTools + ")");
                     //System.out.println(numOfTools);
                     return false;
@@ -110,9 +111,9 @@ public class Engine {
                 Integer numOfTools = day.getOrDefault(request.toolId, 0);
                 numOfTools += request.numOfTools;
                 day.put(request.toolId, numOfTools);
-                if (request.toolId == 1) {
-                    System.out.println("Now tool 1 is used on these days [count of tools]");
-                    for (Integer dayTool1 : days.keySet()) {
+                if (request.toolId == 1){
+                    System.out.println("Now tool 1 is used on these daysMap [availableNum of tools]");
+                    for (Integer dayTool1 : days.keySet()){
                         System.out.println("day " + dayTool1 + ", num of tool1: " + days.getOrDefault(dayTool1, new HashMap<>()).getOrDefault(1, 0));
                     }
                 }
@@ -165,7 +166,7 @@ public class Engine {
             Integer numOfTools = day.getOrDefault(request.toolId, 0);
             numOfTools += request.numOfTools;
             day.put(request.toolId, numOfTools);
-            if (Double.compare(numOfTools, percentage * model.tools[request.toolId].count) > 0) {
+            if (Double.compare(numOfTools, percentage * model.tools[request.toolId].availableNum) > 0) {
                 //System.out.println("Too much of tool " + request.toolId + "(" + numOfTools + ")");
                 for (int k = j; k >= request.pickedDayForDelivery; k--) {
                     day = dayToolCount.get(k);
@@ -177,11 +178,21 @@ public class Engine {
         return true;
     }
 
-    public void run() {
+
+    public long decideDaysGA(){
+        GA_Days ga = new GA_Days(model);
+        ga.start();
+        model.requests = ga.bestSolution.requests;
+        createNegativeRequests();
+        return ga.bestSolution.totalCost;
+    }
+
+    public long run() {
         GA ga = new GA(model);
         ga.start();
         bestSolution = new Solution(model);
         bestSolution.constructFrom(ga.bestSolution);
+        return bestSolution.cost;
     }
 
     public void deleteToolUsage(Map<Integer, Map<Integer, Integer>> dayToolCount, Request request) {

@@ -1,25 +1,24 @@
 package main.java.genetic_algorithm.selection;
 
-import main.java.genetic_algorithm.Chromosome;
-import main.java.genetic_algorithm.evaluation.EvaluationFunction;
+import main.java.genetic_algorithm.DaysChromosome;
+import main.java.genetic_algorithm.evaluation.DaysEvaluation;
 
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Created by felentovic on 16.06.17..
+ * Created by felentovic on 20.06.17..
  */
-public class TournamentSelection extends Selection{
+public class DaysTournament {
     private int k;
-    private EvaluationFunction evaluationFunction;
-    public TournamentSelection(int k, EvaluationFunction evaluationFunction){
+    private DaysEvaluation evaluationFunction;
+    public DaysTournament(int k, DaysEvaluation evaluationFunction){
         this.k = k;
         this.evaluationFunction = evaluationFunction;
     }
 
 
-    @Override
-    public Chromosome selectParent(Chromosome[] population) {
+    public DaysChromosome selectParent(DaysChromosome[] population) {
         //find which chromosomes will play tournament
         Integer indices[] = new Integer[k];
         for (int currentIndex = 0; currentIndex < k; currentIndex++){
@@ -40,7 +39,7 @@ public class TournamentSelection extends Selection{
 
         }
 
-        Arrays.sort(indices,(a,b)-> evaluationFunction.evaluate(population[a]).compareTo(evaluationFunction.evaluate(population[b])));
+        Arrays.sort(indices,(a, b)-> evaluationFunction.evaluate(population[a]).compareTo(evaluationFunction.evaluate(population[b])));
 
         //return the best one
         return population[indices[0]];

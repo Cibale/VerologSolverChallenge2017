@@ -25,7 +25,6 @@ public class StandardCrossover extends Crossover {
             child1.vehicles[child1.requests[i].correspondingVehicleId].addRequest(i);
 
 
-
             child2.vehicles[child2.requests[i].correspondingVehicleId].removeRequest(i);
             child2.requests[i].correspondingVehicleId = parent1.requests[i].correspondingVehicleId;
             child2.vehicles[child2.requests[i].correspondingVehicleId].addRequest(i);

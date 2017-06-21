@@ -10,7 +10,7 @@ import java.util.*;
 public class Vehicle {
     public int id;
     public Map<Integer, DayRoute> dayRouteMap;
-    //in this list are all requests from all days
+    //in this list are all requests from all daysMap
     private List<Integer> requestListIds;
     private Set<Integer> changedDays;
     public int totalVehicleDistance;
@@ -37,7 +37,7 @@ public class Vehicle {
         this.totalExceededLoad = 0;
         this.id = vehicle.id;
         this.chromosome = chromosome;
-        for (Integer requestId : vehicle.requestListIds) {
+        for (Integer requestId : vehicle.requestListIds){
             addRequest(requestId);
             chromosome.requests[requestId].correspondingVehicleId = this.id;
         }
@@ -76,7 +76,7 @@ public class Vehicle {
      * Updates totalVehicleDistance and totalExceededLoad.
      */
     public void update() {
-        // optimize only changed days
+        // optimize only changed daysMap
         for (Integer day : changedDays) {
             DayRoute dayRoute = dayRouteMap.get(day);
             //first delete old dayRoute values
@@ -118,17 +118,10 @@ public class Vehicle {
      */
     private void optimizeDayRoute(DayRoute dayRoute) {
         dayRoute.routes.clear();
-        int i = 0;
         for (Request request : dayRoute.requests) {
-            if (i % 2 == 0) {
-
-                List<Request> route = new ArrayList<>();
-                dayRoute.routes.add(route);
-                route.add(request);
-            } else {
-                dayRoute.routes.get(dayRoute.routes.size() - 1).add(request);
-            }
-            i++;
+            List<Request> route = new ArrayList<>();
+            dayRoute.routes.add(route);
+            route.add(request);
         }
         dayRoute.update();
 

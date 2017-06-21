@@ -17,12 +17,12 @@ public class StandardEvaluation extends EvaluationFunction {
 
 
     @Override
-    long calculatePunishment(Chromosome chromosome) {
+    long calculatePunishment(Chromosome chromosomeInDay) {
         //punishment for: 1.) exceeded distance traveled
         //                2.) exceeded load capacity
-        int totalExceededDistance = 0;
-        int totalExceededLoad = 0;
-        for (Vehicle vehicle : chromosome.vehicles) {
+        long totalExceededDistance = 0;
+        long totalExceededLoad = 0;
+        for (Vehicle vehicle : chromosomeInDay.vehicles) {
             if (vehicle.totalVehicleDistance > model.maxTripDistance) {
                 totalExceededDistance += vehicle.totalVehicleDistance - model.maxTripDistance;
             }
