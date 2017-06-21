@@ -34,8 +34,9 @@ public class StandardEvaluation extends EvaluationFunction {
                 }
             }
         }
+        long costPunishment = 10 * model.vehicleCost;
         // return totalExceededLoad *
-        return model.capacity * totalExceededLoad + model.distanceCost * totalExceededDistance;
+        return costPunishment * (totalExceededLoad + totalExceededDistance);
     }
 
 

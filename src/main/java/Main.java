@@ -17,9 +17,9 @@ public class Main {
         try {
             Parser.parseInput(args[0], model);
             Engine engine = new Engine(model);
-            long cotDays = engine.decideDaysGA();
+            engine.decideDaysDFS();
             long costInDay = engine.run();
-            System.out.println("TOTAL COST IS:"+(costInDay+cotDays));
+            //System.out.println("TOTAL COST IS:"+(costInDay+cotDays));
             Parser.writeOutput(output, engine.bestSolution);
         } catch (IOException e) {
             e.printStackTrace();

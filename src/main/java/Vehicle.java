@@ -15,20 +15,20 @@ public class Vehicle {
     private Set<Integer> changedDays;
     public int totalVehicleDistance;
     public int totalExceededLoad;
-    private Chromosome chromosomeInDay;
+    private Chromosome chromosome;
 
 
-    public Vehicle(int id, Chromosome chromosomeInDay) {
+    public Vehicle(int id, Chromosome chromosome) {
         this.id = id;
         this.requestListIds = new ArrayList<>();
         this.changedDays = new HashSet<>();
         this.dayRouteMap = new HashMap<>();
         this.totalVehicleDistance = 0;
         this.totalExceededLoad = 0;
-        this.chromosomeInDay = chromosomeInDay;
+        this.chromosome = chromosome;
     }
 
-    public Vehicle(Vehicle vehicle, Chromosome chromosomeInDay) {
+    public Vehicle(Vehicle vehicle, Chromosome chromosome) {
         this.dayRouteMap = new HashMap<>();
         this.requestListIds = new ArrayList<>();
         this.changedDays = new HashSet<>();
@@ -36,10 +36,10 @@ public class Vehicle {
         this.totalVehicleDistance = 0;
         this.totalExceededLoad = 0;
         this.id = vehicle.id;
-        this.chromosomeInDay = chromosomeInDay;
-        for (Integer requestId : vehicle.requestListIds){
+        this.chromosome = chromosome;
+        for (Integer requestId : vehicle.requestListIds) {
             addRequest(requestId);
-            chromosomeInDay.requests[requestId].correspondingVehicleId = this.id;
+            chromosome.requests[requestId].correspondingVehicleId = this.id;
         }
         this.update();
 
@@ -47,11 +47,11 @@ public class Vehicle {
 
 
     public void addRequest(Integer newRequestId) {
-        Request newRequest = chromosomeInDay.requests[newRequestId];
+        Request newRequest = chromosome.requests[newRequestId];
 
         DayRoute dayRoute = dayRouteMap.get(newRequest.pickedDayForDelivery);
         if (dayRoute == null) {
-            dayRoute = new DayRoute(chromosomeInDay.model);
+            dayRoute = new DayRoute(chromosome.model);
             dayRouteMap.put(newRequest.pickedDayForDelivery, dayRoute);
         }
         changedDays.add(newRequest.pickedDayForDelivery);
@@ -60,7 +60,7 @@ public class Vehicle {
     }
 
     public void removeRequest(Integer requestId) {
-        Request request = chromosomeInDay.requests[requestId];
+        Request request = chromosome.requests[requestId];
         DayRoute dayRoute = dayRouteMap.get(request.pickedDayForDelivery);
         changedDays.add(request.pickedDayForDelivery);
         dayRoute.remove(request);
@@ -83,13 +83,13 @@ public class Vehicle {
 
             this.totalVehicleDistance -= dayRoute.totalDayRouteDistance;
             for (Integer load : dayRoute.routeMaxLoad) {
-                if (load > chromosomeInDay.model.capacity) {
-                    this.totalExceededLoad -= load - chromosomeInDay.model.capacity;
+                if (load > chromosome.model.capacity) {
+                    this.totalExceededLoad -= load - chromosome.model.capacity;
                 }
             }
 
             //if day route is empty then we first have to substract its distance and load
-            if(dayRoute.requests.size() == 0){
+            if (dayRoute.requests.size() == 0) {
                 dayRouteMap.remove(day);
                 continue;
             }
@@ -99,8 +99,8 @@ public class Vehicle {
 
             this.totalVehicleDistance += dayRoute.totalDayRouteDistance;
             for (Integer load : dayRoute.routeMaxLoad) {
-                if (load > chromosomeInDay.model.capacity) {
-                    this.totalExceededLoad += load - chromosomeInDay.model.capacity;
+                if (load > chromosome.model.capacity) {
+                    this.totalExceededLoad += load - chromosome.model.capacity;
 
                 }
             }
@@ -118,18 +118,86 @@ public class Vehicle {
      */
     private void optimizeDayRoute(DayRoute dayRoute) {
         dayRoute.routes.clear();
-        int counter = 0;
-        List<Request> route = new ArrayList<>();
         for (Request request : dayRoute.requests) {
-            if(counter %2 ==0) {
-                route = new ArrayList<>();
+            if (dayRoute.routes.size() == 0) {
+                dayRoute.routes.add(new ArrayList<>());
             }
-            dayRoute.routes.add(route);
+            List<Request> route = dayRoute.routes.get(dayRoute.routes.size() - 1);
             route.add(request);
-            counter++;
+            dayRoute.update();
+            if (dayRoute.totalDayRouteDistance > chromosome.model.maxTripDistance) {
+                optimizeRouteDistance(dayRoute);
+            }
+            dayRoute.update();
+            if (dayRoute.routeMaxLoad.get(dayRoute.routes.size() - 1) > chromosome.model.capacity) {
+                optimizeRouteCapacity(route);
+            }
+            dayRoute.update();
+            if (dayRoute.routeMaxLoad.get(dayRoute.routes.size() - 1) > chromosome.model.capacity) {
+                route.remove(request);
+                List<Request> newRoute = new ArrayList<>();
+                newRoute.add(request);
+                dayRoute.routes.add(newRoute);
+                dayRoute.update();
+            }
         }
         dayRoute.update();
 
+    }
+
+    private void optimizeRouteDistance(DayRoute dayRoute) {
+        for (int i = 0; i < dayRoute.routes.size(); i++) {
+            List<Request> smallRoute = dayRoute.routes.get(i);
+            Request closestRequest = null;
+            // find closest to depot
+            for (Request request : smallRoute) {
+                if (closestRequest == null) {
+                    closestRequest = request;
+                    continue;
+                }
+                if (chromosome.model.distanceMatrix[0][request.customerId] <
+                        chromosome.model.distanceMatrix[0][closestRequest.customerId]) {
+                    closestRequest = request;
+                }
+            }
+            int indexOfClosestRequest = smallRoute.indexOf(closestRequest);
+            if (indexOfClosestRequest == -1) {
+                System.err.print("Error Vehicle.java 165.line");
+            }
+            swap(0, indexOfClosestRequest, smallRoute);
+            // rest of list
+            for (int oldIndex = 0; oldIndex < smallRoute.size() - 1; oldIndex++) {
+                for (int j = oldIndex + 1; j < smallRoute.size(); j++) {
+                    if (chromosome.model.distanceMatrix[oldIndex][smallRoute.get(j).customerId] <
+                            chromosome.model.distanceMatrix[oldIndex][smallRoute.get(oldIndex + 1).customerId]) {
+                        swap(oldIndex + 1, j, smallRoute);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Set negative requests before positive.
+     */
+    private void optimizeRouteCapacity(List<Request> route) {
+        for (int i = 0; i < route.size(); i++) {
+            for (int j = i + 1; j < route.size(); j++) {
+                Request request1 = route.get(i);
+                Request request2 = route.get(j);
+                if (request2.negativeRequest) {
+                    if (request2.negativeId == request1.id) {
+                        swap(i, j, route);
+                    }
+                }
+            }
+        }
+    }
+
+    private void swap(int index1, int index2, List<Request> route) {
+        Request tmp = route.get(index1);
+        route.set(index1, route.get(index2));
+        route.set(index2, tmp);
     }
 
     @Override
