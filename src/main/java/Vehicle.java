@@ -118,10 +118,15 @@ public class Vehicle {
      */
     private void optimizeDayRoute(DayRoute dayRoute) {
         dayRoute.routes.clear();
+        int counter = 0;
+        List<Request> route = new ArrayList<>();
         for (Request request : dayRoute.requests) {
-            List<Request> route = new ArrayList<>();
+            if(counter %2 ==0) {
+                route = new ArrayList<>();
+            }
             dayRoute.routes.add(route);
             route.add(request);
+            counter++;
         }
         dayRoute.update();
 

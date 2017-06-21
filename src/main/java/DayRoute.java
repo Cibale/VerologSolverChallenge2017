@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -54,38 +55,44 @@ public class DayRoute {
         this.routeMaxLoad.clear();
         //for each route calculate maximal load and distance travelled
         for (List<Request> route : this.routes){
-            //add distance from the depot to frist customer
-            this.totalDayRouteDistance += model.distanceMatrix[model.depotCoordinateId][route.get(0).customerId];
             //calculate load at depot needed for execution of the route
-            int loadAtDepot = 0;
+            int[] toolLoadDepot = new int[model.tools.length];
+            int[] currentLoad = new int[model.tools.length];
+            int[] toolMaxLoad = new int[model.tools.length];
+
             for (int i = 0; i < route.size(); i++){
                 Request req = route.get(i);
-                if (!req.negativeRequest){
-                    loadAtDepot += req.numOfTools * model.tools[req.toolId].size;
+                if(req.negativeRequest) {
+                    currentLoad[req.toolId] += req.numOfTools;
+                    if(currentLoad[req.toolId] > toolMaxLoad[req.toolId]){
+                        toolMaxLoad[req.toolId] = currentLoad[req.toolId];
+                    }
+                }else {
+                    currentLoad[req.toolId] -= req.numOfTools;
+                    if(currentLoad[req.toolId] < 0){
+                        toolLoadDepot[req.toolId] -= currentLoad[req.toolId];
+                        currentLoad[req.toolId] = 0;
+                        toolMaxLoad[req.toolId] -= currentLoad[req.toolId];
+                    }
                 }
+
                 //update distance
                 if (i < route.size() -1) {
                     totalDayRouteDistance += model.distanceMatrix[route.get(i).customerId][route.get(i + 1).customerId];
                 }
 
             }
+            int maxLoad = 0;
+            for(int j = 1; j < toolMaxLoad.length; j++){
+                maxLoad += toolMaxLoad[j]*model.tools[j].size;
+            }
+            this.routeMaxLoad.add(maxLoad);
+            //add distance from the depot to frist customer
+            this.totalDayRouteDistance += model.distanceMatrix[model.depotCoordinateId][route.get(0).customerId];
+
             //add distance from the last customer to depot
             this.totalDayRouteDistance += model.distanceMatrix[route.get(route.size() - 1).customerId][model.depotCoordinateId];
 
-            //simulate route execution to find max load, vehicle unloads at positive request and loads at negative request
-            int maxLoad = loadAtDepot;
-            int currentLoad = loadAtDepot;
-            for (Request request : route){
-                if(request.negativeRequest){
-                    currentLoad += request.numOfTools * model.tools[request.toolId].size;
-                }else {
-                    currentLoad -= request.numOfTools * model.tools[request.toolId].size;
-                }
-                if (currentLoad > maxLoad){
-                    maxLoad = currentLoad;
-                }
-            }
-            this.routeMaxLoad.add(maxLoad);
         }
 
 
