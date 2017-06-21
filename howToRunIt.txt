@@ -1,0 +1,1 @@
+Program expects two inputs: path to file where task is described and path to file output needs to be written
