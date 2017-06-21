@@ -1,0 +1,34 @@
+In this file is described the flow of the algorithm.
+
+Flow of algorithm consists of two main steps:
+	1) Decide which request will be executed on which day
+	2) Decide which vehicle will execute which request
+
+For 1) we have two possible solutions:
+	1.1) Genetic algorithm
+	1.2) DFS with memoization
+
+For 2) we propose Genetic algorithm as solution with several greedy optimizations.
+
+1.1) Genetic Algorithm description
+
+
+1.1) DFS with memoization description
+
+
+2) Description of Genetic Algorithm
+	2.1) Chromosome description
+	
+	2.2) Crossover description
+	
+	2.3) Mutation description
+	
+	2.4) Selection description
+
+	2.5) Chosing right parameters
+
+3) Several optimizations which are done "on the way"
+	3.1) Optimizing route distance
+	
+	3.2) Optimizing route capacity
+

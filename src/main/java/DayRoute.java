@@ -71,8 +71,8 @@ public class DayRoute {
                     currentLoad[req.toolId] -= req.numOfTools;
                     if(currentLoad[req.toolId] < 0){
                         toolLoadDepot[req.toolId] -= currentLoad[req.toolId];
-                        currentLoad[req.toolId] = 0;
                         toolMaxLoad[req.toolId] -= currentLoad[req.toolId];
+                        currentLoad[req.toolId] = 0;
                     }
                 }
 

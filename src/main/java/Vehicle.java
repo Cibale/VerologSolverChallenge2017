@@ -186,7 +186,7 @@ public class Vehicle {
                 Request request1 = route.get(i);
                 Request request2 = route.get(j);
                 if (request2.negativeRequest) {
-                    if (request2.negativeId == request1.id) {
+                    if (request2.toolId == request1.toolId) {
                         swap(i, j, route);
                     }
                 }
