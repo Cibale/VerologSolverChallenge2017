@@ -1,9 +1,11 @@
 package main.java;
 
+import java.io.Serializable;
+
 /**
  * Created by mmatak on 6/15/17.
  */
-public class Request {
+public class Request implements Serializable{
     public int id;
     public boolean negativeRequest;
     public int customerId;
@@ -85,7 +87,6 @@ public class Request {
         if (durationInDays != request.durationInDays) return false;
         if (toolId != request.toolId) return false;
         if (numOfTools != request.numOfTools) return false;
-        if (pickedDayForDelivery != request.pickedDayForDelivery) return false;
         return correspondingVehicleId == request.correspondingVehicleId;
 
     }
@@ -100,7 +101,6 @@ public class Request {
         result = 31 * result + durationInDays;
         result = 31 * result + toolId;
         result = 31 * result + numOfTools;
-        result = 31 * result + pickedDayForDelivery;
         result = 31 * result + correspondingVehicleId;
         return result;
     }
