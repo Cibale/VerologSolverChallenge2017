@@ -20,7 +20,7 @@ public class Solution {
     // index is id of tool, value is how many of those tools are used
     public int[] toolUse;
     public int distance;
-    public int cost;
+    public long cost;
     public List<Day> days = new ArrayList<>();
     private ProblemModel model;
 

@@ -106,6 +106,8 @@ public class DFS {
                     if (startDFS(child, level + 1)) {
                         node.pickedChild = child;
                         return true;
+                    } else {
+                        System.out.println(".");
                     }
                 }
                 engine.deleteToolUsage(dayToolCount, request);

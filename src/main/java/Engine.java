@@ -46,7 +46,7 @@ public class Engine {
             model.requests[i] = new Request(requests.get(i));
         }
         try {
-            FileOutputStream out = new FileOutputStream("firstInstance.out");
+            FileOutputStream out = new FileOutputStream("secondInstance.out");
             ObjectOutputStream oos = new ObjectOutputStream(out);
             oos.writeObject(requests);
             oos.flush();
@@ -63,7 +63,7 @@ public class Engine {
         Map<Integer, Map<Integer, Integer>> days = new HashMap<>();
         //System.out.println("Testing solution: " + requests.hashCode());
         for (Request request : requests) {
-            for (int j = request.pickedDayForDelivery; j <= request.pickedDayForDelivery + request.durationInDays; j++) {
+            for (int j = request.pickedDayForDelivery; j < request.pickedDayForDelivery + request.durationInDays; j++) {
                 Map<Integer, Integer> day = days.computeIfAbsent(j, k -> new HashMap<>());
                 Integer numOfTools = day.getOrDefault(request.toolId, 0);
                 numOfTools += request.numOfTools;
@@ -100,7 +100,7 @@ public class Engine {
                 }
             }
             request.pickedDayForDelivery = minDay;
-            for (int j = request.pickedDayForDelivery; j <= request.pickedDayForDelivery + request.durationInDays; j++) {
+            for (int j = request.pickedDayForDelivery; j < request.pickedDayForDelivery + request.durationInDays; j++) {
                 Map<Integer, Integer> day = days.get(j);
                 if (day == null) {
                     System.out.println("Creating hashmap for day " + j);

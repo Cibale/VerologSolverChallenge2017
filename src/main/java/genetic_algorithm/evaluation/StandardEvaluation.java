@@ -17,7 +17,7 @@ public class StandardEvaluation extends EvaluationFunction {
 
 
     @Override
-    int calculatePunishment(Chromosome chromosome) {
+    long calculatePunishment(Chromosome chromosome) {
         //punishment for: 1.) exceeded distance traveled
         //                2.) exceeded load capacity
         int totalExceededDistance = 0;
@@ -34,7 +34,7 @@ public class StandardEvaluation extends EvaluationFunction {
                 }
             }
         }
-        int costPunishment = 1000 * model.vehicleCost;
+        long costPunishment = 10 * model.vehicleCost;
         // return totalExceededLoad *
         return costPunishment * (totalExceededLoad + totalExceededDistance);
     }

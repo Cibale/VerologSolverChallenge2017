@@ -41,14 +41,14 @@ public abstract class EvaluationFunction {
      * @param chromosome representation of solution
      * @return total cost of solution
      */
-    public final Integer evaluate(Chromosome chromosome) {
+    public final Long evaluate(Chromosome chromosome) {
         int trvc = calculateTRVC(chromosome);
         int tuvc = calculateTUVC(chromosome);
         int tdtc = calculateTDTC(chromosome);
         //int tc = calculateTC(chromosome);
         int cost = trvc + tuvc + tdtc;// + tc;
         chromosome.realCost = cost;
-        int punishment = calculatePunishment(chromosome);
+        long punishment = calculatePunishment(chromosome);
         chromosome.totalCost = cost + punishment;
         return cost + punishment;
     }
@@ -91,7 +91,7 @@ public abstract class EvaluationFunction {
     }
 
 
-    abstract int calculatePunishment(Chromosome chromosome);
+    abstract long calculatePunishment(Chromosome chromosome);
 
     public void evaluatePopulation(Chromosome[] population) {
         for (int i = 0; i < population.length; i++) {

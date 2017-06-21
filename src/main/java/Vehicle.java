@@ -37,7 +37,7 @@ public class Vehicle {
         this.totalExceededLoad = 0;
         this.id = vehicle.id;
         this.chromosome = chromosome;
-        for (Integer requestId : vehicle.requestListIds){
+        for (Integer requestId : vehicle.requestListIds) {
             addRequest(requestId);
             chromosome.requests[requestId].correspondingVehicleId = this.id;
         }
@@ -89,7 +89,7 @@ public class Vehicle {
             }
 
             //if day route is empty then we first have to substract its distance and load
-            if(dayRoute.requests.size() == 0){
+            if (dayRoute.requests.size() == 0) {
                 dayRouteMap.remove(day);
                 continue;
             }
@@ -118,10 +118,17 @@ public class Vehicle {
      */
     private void optimizeDayRoute(DayRoute dayRoute) {
         dayRoute.routes.clear();
+        int i = 0;
         for (Request request : dayRoute.requests) {
-            List<Request> route = new ArrayList<>();
-            dayRoute.routes.add(route);
-            route.add(request);
+            if (i % 2 == 0) {
+
+                List<Request> route = new ArrayList<>();
+                dayRoute.routes.add(route);
+                route.add(request);
+            } else {
+                dayRoute.routes.get(dayRoute.routes.size() - 1).add(request);
+            }
+            i++;
         }
         dayRoute.update();
 
