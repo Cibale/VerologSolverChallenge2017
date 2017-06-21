@@ -25,16 +25,16 @@ public class Main {
                 "test_instances/ORTEC_Test_10.txt"
         };
         String[] outputArray = {
-                "daysRandom-output_01.txt",
-                "daysRandom-output_02.txt",
-                "daysRandom-output_03.txt",
-                "daysRandom-output_04.txt",
-                "daysRandom-output_05.txt",
-                "daysRandom-output_06.txt",
-                "daysRandom-output_07.txt",
-                "daysRandom-output_08.txt",
-                "daysRandom-output_09.txt",
-                "daysRandom-output_10.txt",
+                "daysGA-output_01.txt",
+                "daysGA-output_02.txt",
+                "daysGA-output_03.txt",
+                "daysGA-output_04.txt",
+                "daysGA-output_05.txt",
+                "daysGA-output_06.txt",
+                "daysGA-output_07.txt",
+                "daysGA-output_08.txt",
+                "daysGA-output_09.txt",
+                "daysGA-output_10.txt",
         };
         for(int i = 0; i <10; i++){
             Path output = Paths.get(outputArray[i]);
@@ -42,9 +42,9 @@ public class Main {
             try {
                 Parser.parseInput(inputArray[i], model);
                 Engine engine = new Engine(model);
-                engine.decideDays();
+                //engine.decideDays();
                 //engine.decideDaysDFS();
-                //engine.decideDaysGA();
+                engine.decideDaysGA();
                 long costInDay = engine.run();
                 //System.out.println("TOTAL COST IS:"+(costInDay+cotDays));
                 Parser.writeOutput(output, engine.bestSolution);
