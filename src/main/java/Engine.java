@@ -104,40 +104,17 @@ public class Engine {
             for (int j = request.pickedDayForDelivery; j < request.pickedDayForDelivery + request.durationInDays; j++) {
                 Map<Integer, Integer> day = days.get(j);
                 if (day == null) {
-                    System.out.println("Creating hashmap for day " + j);
                     day = new HashMap<>();
                     days.put(j, day);
                 }
                 Integer numOfTools = day.getOrDefault(request.toolId, 0);
                 numOfTools += request.numOfTools;
                 day.put(request.toolId, numOfTools);
-                if (request.toolId == 1){
-                    System.out.println("Now tool 1 is used on these daysMap [availableNum of tools]");
-                    for (Integer dayTool1 : days.keySet()){
-                        System.out.println("day " + dayTool1 + ", num of tool1: " + days.getOrDefault(dayTool1, new HashMap<>()).getOrDefault(1, 0));
-                    }
-                }
-                System.out.println("Day " + j + ", now has " + numOfTools + " instances of tool kind " + request.toolId);
-                System.out.println();
             }
 
-            System.out.println("Finished with processing request " + request.id);
-
-//            model.negativeRequests[request.id] = request.getNegativeRequest();
-//            model.negativeRequests[request.id].id = request.id + model.requests.length;
-//            Integer deliveryDay = model.negativeRequests[request.id].pickedDayForDelivery;
-//            Map<Integer,Integer> day = days.get(deliveryDay);
-//            if(day == null){
-//                day = new HashMap<>();
-//                days.put(deliveryDay,day);
-//            }
-//            Integer numOfTools = day.getOrDefault(request.toolId,0);
-//            numOfTools-=request.numOfTools;
-//            day.put(request.toolId, numOfTools);
 
         }
         createNegativeRequests();
-        System.out.print("dd");
     }
 
     /**
