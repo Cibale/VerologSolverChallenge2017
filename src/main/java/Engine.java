@@ -1,15 +1,13 @@
 package main.java;
 
 import main.java.dfs.DFS;
-import main.java.genetic_algorithm.Chromosome;
+import main.java.genetic_algorithm.DaysChromosome;
 import main.java.genetic_algorithm.GA;
-import main.java.genetic_algorithm.GA_Days;
-import main.java.output.Day;
+import main.java.genetic_algorithm.VehicleChromosome;
 import main.java.output.Solution;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.security.Key;
 import java.util.*;
 
 /**
@@ -156,19 +154,25 @@ public class Engine {
     }
 
 
-    public long decideDaysGA(){
-        GA_Days ga = new GA_Days(model);
+    public long decideDaysGA() {
+        GA ga = new GA(model, () -> DaysChromosome.createNew(model), 100, 3);
+        ga.NUMBER_OF_GENERATIONS = 500;
+        ga.CROSSOVER_PROBABILITY = 0.85;
+        ga.MUTATION_PROBABILITY = 0.20;
         ga.start();
         model.requests = ga.bestSolution.requests;
         createNegativeRequests();
         return ga.bestSolution.totalCost;
     }
 
-    public long run() {
-        GA ga = new GA(model);
+    public long assignRequestsToVehicles() {
+        GA ga = new GA(model, () -> VehicleChromosome.createNew(model), 100, 3);
+        ga.NUMBER_OF_GENERATIONS = 500;
+        ga.CROSSOVER_PROBABILITY = 0.8;
+        ga.MUTATION_PROBABILITY = 0.3;
         ga.start();
         bestSolution = new Solution(model);
-        bestSolution.constructFrom(ga.bestSolution);
+        bestSolution.constructFrom((VehicleChromosome)ga.bestSolution);
         return bestSolution.cost;
     }
 

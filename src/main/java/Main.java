@@ -44,8 +44,8 @@ public class Main {
                 Engine engine = new Engine(model);
                 //engine.decideDays();
                 //engine.decideDaysDFS();
-                engine.decideDaysGreedy();
-                long costInDay = engine.run();
+                engine.decideDaysGA();
+                long costInDay = engine.assignRequestsToVehicles();
                 //System.out.println("TOTAL COST IS:"+(costInDay+cotDays));
                 Parser.writeOutput(output, engine.bestSolution);
             } catch (IOException e) {

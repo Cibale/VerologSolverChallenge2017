@@ -7,5 +7,5 @@ import main.java.genetic_algorithm.Chromosome;
  */
 public abstract class Selection {
 
-    public  abstract Chromosome selectParent(Chromosome[] population);
+    public abstract Chromosome selectParent(Chromosome[] population);
 }

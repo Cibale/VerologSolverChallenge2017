@@ -3,8 +3,6 @@ package main.java.genetic_algorithm;
 import main.java.ProblemModel;
 import main.java.genetic_algorithm.crossover.Crossover;
 import main.java.genetic_algorithm.crossover.StandardCrossover;
-import main.java.genetic_algorithm.evaluation.EvaluationFunction;
-import main.java.genetic_algorithm.evaluation.StandardEvaluation;
 import main.java.genetic_algorithm.mutation.Mutation;
 import main.java.genetic_algorithm.mutation.StandardMutation;
 import main.java.genetic_algorithm.selection.Selection;
@@ -12,6 +10,7 @@ import main.java.genetic_algorithm.selection.TournamentSelection;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.function.Supplier;
 
 /**
  * Created by mmatak on 6/16/17.
@@ -19,31 +18,32 @@ import java.util.Comparator;
 public class GA {
     public Chromosome bestSolution;
     // must be even because of start method
-    public static int POPULATION_SIZE = 100;
-    public static int NUMBER_OF_GENERATIONS = 500;
-    public static double CROSSOVER_PROBABILITY = 0.8;
-    public static double MUTATION_PROBABILITY = 0.3;
-    public static int K_TOURNAMENT_SELECTION = 3;
+    public int POPULATION_SIZE;
+    public int NUMBER_OF_GENERATIONS;
+    public double CROSSOVER_PROBABILITY;
+    public double MUTATION_PROBABILITY;
+    public int K_TOURNAMENT_SELECTION;
     public Chromosome[] population;
-    private EvaluationFunction evaluationFunction;
     private Crossover crossover;
     private Mutation mutation;
     private Selection selection;
     private ProblemModel model;
+    private Supplier<Chromosome> factory;
 
-
-    public GA(ProblemModel model) {
+    public GA(ProblemModel model, Supplier<Chromosome> factory, int POPULATION_SIZE, int k_TOURNAMENT_SELECTION) {
         this.model = model;
+        this.factory = factory;
+        this.K_TOURNAMENT_SELECTION = k_TOURNAMENT_SELECTION;
+        this.POPULATION_SIZE = POPULATION_SIZE;
         population = new Chromosome[POPULATION_SIZE];
-        evaluationFunction = new StandardEvaluation(model);
         crossover = new StandardCrossover();
         mutation = new StandardMutation();
-        selection = new TournamentSelection(K_TOURNAMENT_SELECTION, evaluationFunction);
+        selection = new TournamentSelection(K_TOURNAMENT_SELECTION);
     }
 
     public void start() {
         initializePopulation(population);
-        evaluationFunction.evaluatePopulation(population);
+        evaluatePopulation(population);
         sortPopulation(population);
         Chromosome[] newPopulation = new Chromosome[population.length];
 
@@ -62,15 +62,15 @@ public class GA {
                 newPopulation[currentAvailableIndex++] = children[1];
             }
             for (int j = 0; j < POPULATION_SIZE; j++) {
-                population[j] = new Chromosome(newPopulation[j]);
+                population[j] = newPopulation[j].clone();
             }
-            evaluationFunction.evaluatePopulation(population);
+            evaluatePopulation(population);
             sortPopulation(population);
             if (i % 10 == 0) {
                 System.out.println("Generation: " + i + " , best solution: " + population[0].totalCost);
             }
         }
-        System.out.println("Generation: " + GA.NUMBER_OF_GENERATIONS + " , best solution: " + population[0].totalCost);
+        System.out.println("Generation: " + NUMBER_OF_GENERATIONS + " , best solution: " + population[0].totalCost);
         this.bestSolution = population[0];
     }
 
@@ -81,11 +81,16 @@ public class GA {
      */
     private void initializePopulation(Chromosome[] population) {
         for (int i = 0; i < population.length; i++) {
-            population[i] = new Chromosome(model);
+            population[i] = factory.get();
             population[i].initialize();
         }
     }
 
+    private void evaluatePopulation(Chromosome[] population) {
+        for (int i = 0; i < population.length; i++) {
+            population[i].totalCost = population[i].evaluate();
+        }
+    }
     /**
      * Sort population by their totalCost.
      * Solutions with less cost after sorting must be on lower indexes.

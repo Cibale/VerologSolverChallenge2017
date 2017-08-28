@@ -4,7 +4,7 @@ import main.java.DayRoute;
 import main.java.ProblemModel;
 import main.java.Request;
 import main.java.Vehicle;
-import main.java.genetic_algorithm.Chromosome;
+import main.java.genetic_algorithm.VehicleChromosome;
 
 import java.util.*;
 
@@ -59,7 +59,7 @@ public class Solution {
      *
      * @param chromosome chromosme from which solution is constructed
      */
-    public void constructFrom(Chromosome chromosome) {
+    public void constructFrom(VehicleChromosome chromosome) {
         /*
         1. sort requests per daysMap (lower day - lower index)
         2. for each day spent:

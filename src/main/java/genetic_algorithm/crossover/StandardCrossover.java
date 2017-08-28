@@ -13,26 +13,17 @@ public class StandardCrossover extends Crossover {
     @Override
     public Chromosome[] crossParents(Chromosome parent1, Chromosome parent2, double CROSSOVER_PROBABILITY) {
         if (Math.random() > CROSSOVER_PROBABILITY) {
-            return new Chromosome[]{new Chromosome(parent1), new Chromosome(parent2)};
+            return new Chromosome[]{parent1.clone(), parent2.clone()};
         }
-        int splitPoint = ThreadLocalRandom.current().nextInt(parent1.requests.length);
-        Chromosome child1 = new Chromosome(parent1);
-        Chromosome child2 = new Chromosome(parent2);
+        int splitPoint = ThreadLocalRandom.current().nextInt(parent1.getChromosomeLength());
+        Chromosome child1 = parent1.clone();
+        Chromosome child2 = parent2.clone();
         for (int i = 0; i < splitPoint; i++) {
-
-            child1.vehicles[child1.requests[i].correspondingVehicleId].removeRequest(i);
-            child1.requests[i].correspondingVehicleId = parent2.requests[i].correspondingVehicleId;
-            child1.vehicles[child1.requests[i].correspondingVehicleId].addRequest(i);
-
-
-            child2.vehicles[child2.requests[i].correspondingVehicleId].removeRequest(i);
-            child2.requests[i].correspondingVehicleId = parent1.requests[i].correspondingVehicleId;
-            child2.vehicles[child2.requests[i].correspondingVehicleId].addRequest(i);
+            child1.setGenomeValue(i, parent2.getGenomeValue(i));
+            child2.setGenomeValue(i, parent1.getGenomeValue(i));
         }
-        for (int i = 0; i < parent1.vehicles.length; i++) {
-            child1.vehicles[i].update();
-            child2.vehicles[i].update();
-        }
+        child1.update();
+        child2.update();
 
         return new Chromosome[]{child1, child2};
     }
